@@ -1,0 +1,39 @@
+.carousel .item p{
+    background-color: black;
+    opacity: 0.5;
+}
+.carousel .item h3{
+    background-color: black;
+    opacity: 0.5;
+}
+.crossfit{
+   
+   color:white;
+   
+   /*<p class="text-muted mb-0 ">Ukoliko ste u duši Spartanac ili Spartanka – ovaj trening je idealan za vas.</p>
+      */               
+    background-image: url("../assets/slike/crossfit.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.pilates{
+    color:white;
+    background-image: url("../assets/slike/pilates.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.spinning{
+    color:white;
+    background-image: url("../assets/slike/spinning.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.crna{
+    background-color: black;
+    color: white;
+}
+#logo{
+   height: 30pt;
+   width: auto;
+
+}
