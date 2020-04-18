@@ -30,12 +30,20 @@
     target: '#mainNav',
     offset: 75
   });
-
+  
   // Collapse Navbar
   var navbarCollapse = function() {
     if ($("#mainNav").offset().top > 100) {
       $("#mainNav").addClass("navbar-scrolled");
+      $(".dropdown-item").css({
+        "color": "black",
+        "background-color": "white"
+      })
     } else {
+      $(".dropdown-item").css({
+        "color": "lightgrey",
+        "background-color": "transparent"
+      })
       $("#mainNav").removeClass("navbar-scrolled");
     }
   };

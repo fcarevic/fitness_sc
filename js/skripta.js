@@ -16,3 +16,43 @@ function prikaziTekst(id, enter){
     elem.innerHTML =  niz[br];
     else elem.innerHTML =  niz2[br];
 }
+
+
+$(document).ready(function(){
+
+        $(".dropdown-item").on({
+            mouseenter: function(){
+                if ($("#mainNav").offset().top > 100)
+                 $(this).css({
+                        "color" :"white",
+                        "background-color" : "black" 
+                    });
+                else 
+                $(this).css({
+                    "background-color" : "white" ,
+                    "color" : "black"
+                });
+                    },
+            mouseleave: function(){
+                if ($("#mainNav").offset().top > 100)
+                $(this).css({
+                    "color": "black",
+                    "background-color" : "white"
+                });
+                else  $(this).css({
+                    "color" :"lightgrey",
+                    "background-color" : "transparent" 
+                });
+
+
+            }
+
+
+        })
+
+
+
+
+
+
+})
