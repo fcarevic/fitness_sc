@@ -48,3 +48,21 @@
 .black{
     background-color: black;
 }
+.masaza1{
+    color:white;
+    background-image: url("../assets/slike/masaza1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.masaza2{
+    color:white;
+    background-image: url("../assets/slike/masaza2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.masaza3{
+    color:white;
+    background-image: url("../assets/slike/masaza3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

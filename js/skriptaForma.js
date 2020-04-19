@@ -101,26 +101,73 @@
 
 
     $("#pdf").click(function(){
+       
+      $("#name").css({"border-color" : "gray"});
+      $("#prezime").css({"border-color" : "gray"});
+      $("#date").css({"border-color" : "gray"});
+      $("#message").css({"border-color" : "gray"});
+      $("#email").css({"border-color" : "gray"});
+      $("#telefon").css({"border-color" : "gray"});
+
        let flag = true;
-            if( $("#name").val() == "") {
+       let imerex= /^[a-zA-Z]+$/
+            if(!(imerex.test($("#name").val())) ) {
                 $("#name").css({"border-color" : "red"});
                 flag=false;
             }
-            if( $("#prezime").val() == "") {
-                $("#prezime").css({"border-color" : "red"}); flag=false;}
-            if( $("#email").val() == "") {
-                 $("#email").css({"border-color" : "red"}); flag=false;}
-            if( $("#date").val() == "")  { 
-                $("#date").css({"border-color" : "red"}); flag=false;}
+            if(!(imerex.test($("#prezime").val()))) {
+                $("#prezime").css({"border-color" : "red"});
+                 flag=false;}
+          
+            //testira datum da li je prazan ili prosao
+             if( $("#date").val() == "")  { 
+                $("#date").css({"border-color" : "red"}); 
+                flag=false;}
+             else {  let date = new Date( $("#date").val());
+                  let curr = new Date();
+                  if (curr.getTime()> date.getTime()) {
+                    $("#date").css({"border-color" : "red"});
+                     flag=false;
+                  }
+            }
              if( $("#message").val() == "")  { 
-                    $("#message").css({"border-color" : "red"}); flag=false;}
+                    $("#message").css({"border-color" : "red"});
+                     flag=false;}
 
                     //provera regex za telefon mobilni +381 64 123 123 123
+                    // 064 123 34 65 , +(381) 064 1234 34 34 , 
+              
+        
+              let telrex= [ /^\d{9,11}$/ ,  /^\+(\()?\d{2,3}(\))?\d{9,10}$/ ];
+              let flagTel=false;
+              for(let i= 0 ; i < telrex.length;i++) {
+                  if( (telrex[i].test($("#telefon").val()))) {
+                    flagTel=true; break;
+                    }
+                }
+               if(!flagTel) {
+                 $("#telefon").css({"border-color" : "red"});
+                  flag=false;
+              }
+              
+          
+            let emailreg= /^\w+@\w+([-\.]\w+)*(\.\w{2,3})+$/
+            if(!emailreg.test($("#email").val())) {
+              $("#email").css({"border-color" : "red"}); flag=false;
+            }
             
-            if( $("#email").val() == "") {
-                        $("#email").css({"border-color" : "red"}); flag=false;}
+            if(!flag) return;
+            
+            //stampanje
+            let el= document.getElementById("forma").cloneNode(true);
+            $(el).addClass("col-12 pt-2");
+            let stampa= document.createElement("div");
+            stampa.setAttribute("class", "p-4");
+            stampa.innerHTML = '<div class="text-center"> <h2 class="title-section"><span class="title-regular">Zahtev za uslugama</h2> </div><hr class="title-underline " />  <p>Privatne informacije su zaštićene zakonom o zaštiti ličnih informacija. <br> Hvala na poverenju!</p>';
+            stampa.appendChild(el);
 
-
+            html2pdf(stampa);
+            
 
     })
 
