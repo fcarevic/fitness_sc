@@ -100,9 +100,18 @@ a[data-toggle="collapse"] {
     background-color: transparent;
 }
 
+.bojaSlovaCrna{
+    color:black;
+}
+
 @media screen and (min-width: 0px) and (max-width: 900px) {
     .odaberi{ display: inline; }  /* show it on smaller screen */
   }
 @media screen and (min-width: 900px) {
     .odaberi{ display: inline; }   /* hide it on larger screens */
+  }
+
+  .black{
+      background-color: black !important;
+      color: white !important;
   }
