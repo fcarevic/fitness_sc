@@ -72,3 +72,23 @@
     border-color: grey;
     padding: 3pt;
 }
+#visina30{
+    height: 20pt;
+}
+#visina30 ul{
+    display: inline;
+    
+}
+#visina30 li{
+    
+    border-radius: 10pt;
+    padding: 10pt;
+    display: inline;
+    list-style: none;
+    font-weight: bold;
+ 
+}
+.slika{
+    width: auto;
+    height: 100% !important;
+}
