@@ -1,26 +1,20 @@
-var niz= [
-    '<br> <br><br><br><p class="text-muted mb-0 ">Ukoliko ste u duši Spartanac ili Spartanka – ovaj trening je idealan za vas.</p><br> <br><br>',
-    '<br> <br><br><br><p class="text-muted mb-0 ">Oslobadnjanje od stresa za lepse polovine.</p><br> <br><br>',
-    '<br> <br><br><br><p class="text-muted mb-0 ">Sve u sluzbi vaseg zdravlja.</p><br> <br><br>'
-                   ];
-var niz2 = [' <br> <br><br><br><br><br> <br><br><h3 class="h4 mb-2 crna rounded">Crossfit</h3>',
-' <br> <br><br><br><br><br> <br><br><h3 class="h4 mb-2 crna rounded">Pilates</h3>',
-' <br> <br><br><br><br><br> <br><br><h3 class="h4 mb-2 crna rounded">Spinning</h3>'
-];
-
-function prikaziTekst(id, enter){
-    return;
-    elem=document.getElementById(id);
-    let br = parseInt(elem.id);
-    if(enter)
-    elem.innerHTML =  niz[br];
-    else elem.innerHTML =  niz2[br];
+function scrolled(){
+    if ($("#mainNav").offset().top < 100) {
+        $("#mainNav").addClass("black");
+        $("#mainNav").removeClass("navbar-scrolled");
+        $(".dropdown-item").addClass("black");
+    }
+     else 
+        {$("#mainNav").removeClass("black");
+        $(".dropdown-item").removeClass("black");
+        $("#mainNav").addClass("navbar-scrolled");
+    }
 }
-
-
 $(document).ready(function(){
-
-        $(".dropdown-item").on({
+    scrolled();
+    $(window).scroll(scrolled);
+    
+ $(".dropdown-item").on({
             mouseenter: function(){
                 if ($("#mainNav").offset().top > 100)
                  $(this).css({
@@ -41,7 +35,7 @@ $(document).ready(function(){
                 });
                 else  $(this).css({
                     "color" :"lightgrey",
-                    "background-color" : "transparent" 
+                    "background-color" : "black" 
                 });
 
 

@@ -98,6 +98,20 @@
 
 
     });
+    $("#treningDrop").on({
+      mouseenter: function(){
+          $(".treningCol").collapse('show');
+      },
+      
+      
+});
+
+$(".treningCol").on({
+    mouseleave: function(){
+        
+      $(".treningCol").collapse('hide');
+    }
+});
 
 
     $("#pdf").click(function(){

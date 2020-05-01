@@ -37,14 +37,22 @@
    width: auto;
 
 }
-.dropdown-menu,
+.dropdown-menu{
+    background-color: transparent;
+    color: lightgray;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 3pt;
+}
+
 .dropdown-item{
-      background-color: transparent;
+      background-color: black;
       color: lightgray;
       border-style: none;
       font-weight: bold;
       border-radius: 3pt;
 }
+
 .black{
     background-color: black !important;
 }
@@ -52,8 +60,15 @@
     min-width: 100%;
     padding-left: 0px;
     padding-right: 0px;
+
 }
 
 #treningMenuCollapse{
     list-style: none;
+}
+
+.card{
+    border-width: 3pt;
+    border-color: grey;
+    padding: 3pt;
 }
