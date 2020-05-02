@@ -4,7 +4,7 @@
     * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-creative/blob/master/LICENSE)
     */
    $(document).ready(function(){
-    // Smooth scrolling using jQuery easing
+  /*  // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
       if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
         var target = $(this.hash);
@@ -113,7 +113,7 @@ $(".treningCol").on({
     }
 });
 
-
+*/
     $("#pdf").click(function(){
        
       $("#name").css({"border-color" : "gray"});

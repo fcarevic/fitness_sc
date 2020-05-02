@@ -1,0 +1,25 @@
+.black{
+    background-color: black !important;
+    color: lightgray !important;
+}
+
+.white{
+    background-color: white !important;
+    color: black !important;
+}
+#treningMenuCollapse{
+    list-style: none;
+}
+#visina30 ul{
+    display: inline;
+    
+}
+#visina30 li{
+    
+    border-radius: 10pt;
+    padding: 10pt;
+    display: inline;
+    list-style: none;
+    font-weight: bold;
+ 
+}

@@ -55,6 +55,11 @@
 
 .black{
     background-color: black !important;
+    color: lightgrey !important;
+}
+.white{
+    background-color: white !important;
+    color: black !important;
 }
 .containerProsiri{
     min-width: 100%;
@@ -66,9 +71,32 @@
 #treningMenuCollapse{
     list-style: none;
 }
+.navbar-toggler{
+    background-color: lightgrey !important;
+}
 
 .card{
     border-width: 3pt;
     border-color: grey;
     padding: 3pt;
+}
+#visina30{
+    height: 20pt;
+}
+#visina30 ul{
+    display: inline;
+    
+}
+#visina30 li{
+    
+    border-radius: 10pt;
+    padding: 10pt;
+    display: inline;
+    list-style: none;
+    font-weight: bold;
+ 
+}
+.slika{
+    width: auto;
+    height: 100% !important;
 }

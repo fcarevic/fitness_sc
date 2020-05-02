@@ -1,0 +1,28 @@
+pilates: klasicni, stott, reformer
+yoga: (karma)kharma, (Hata)Hatha, (radža) raja
+core : crossfit , abdomenalni , klasicni
+cardio: trcanje , boks , mix
+
+cardio box:
+Ništa ne oslobođa od stresa kao vežbanje kroz udarce! Osećaj nadmoći, snage i koordinacije stvara neku vrstu zavisnosti od vežbanja i čini istrajavanje u treningu na duže staze mnogo lakšim.
+To je ono kada u toku dana osetiš radost u pozadini misli i tek onda shvatiš da je to zato što te čeka trening. Ali cardio box je sve samo ne prazna zabava.
+Salo doslovno izgori ovim treningom, mišići postaju snažni, vretenasti i neprikosnoveno estetski oblikovani. Telo je gipko i izdržljivo a um podstaknut tim osećajem postaje fokusiraniji i i pozitivniji.
+
+cadio trcanje:
+Trčanje poboljšava vašu aerobnu kondiciju jačajući vaše srce. Takođe, povećava se VO2 max i efikasnost korišćenja kiseonika, a sve to rezultira i snižavanjem pulsa u mirovanju, kao i rešavanju problema sa krvnim pritiskom, smanjivanju mogućnosti od šloga, infarkta…
+
+core abdomenal:
+Trbušni mišići imaju veoma značajnu ulogu i jačajući core mišiće, postavlja se  osnova za snažno telo.
+
+Jak core čini da budeš bolji u svemu što radiš – od svakodnevnih aktivnosti do omiljenog sporta. Svi pokreti na CORE treningu imaju lakše i teže modifikacije, tako da su izazovni, a opet dostižni za svaki fitnes nivo.
+core crossfit:
+Tačnije, crossfit predstavlja izuzetno intenzivno vežbanje koje uključuje nekoliko različitih treninga. Funkcionalni pokreti koji se izvode se zapravo izvode pod velikim intenzitetom s ciljem da se telo navikne na različite vežbe koje se nadovezuju jedna na drugu sa kratkim pauzama između njih.
+ Ti treninzi su kombinacija kardio vežbi, treninga snage, treninga sa opterećenjima, treninga izdržljivosti i gimnastičkih vežbi.
+
+ //////////////////////////
+
+ todo:
+ - carousel izjednaci slike 
+ - onload promeni da se odmah prikazu slike, ne kasnije
+ - komentare odradi
+ -  tekstove kod nutricioniste i masaze, promeni tekst u izvestaju 
