@@ -19,35 +19,63 @@
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="./css/stil.css">
     <link rel="stylesheet" type="text/css" href="./css/oNama.css">
+
+
+    <!-- OVO ISPOD UKLJUCUJES ZA NAVIGACIJU-->
+    <link rel="stylesheet" href="./css/navBarBlackWhite.css">
+    
+    <!--------------------------------------------------------------------->
     
 </head>
 
 <body>
 
-
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: black;" id="mainNav">
-        <div class="container-fluid">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="./assets/img/logo.png" class="img-fluid rounded-circle" id="logo" alt=""></a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">Početna</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Usluge
-                        </a>
-                        <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Treninzi</a> 
-                            <a class="dropdown-item" href="nutricionista.html">Nutricionista</a> 
-                            <a class="dropdown-item" href="masaza.html">Masaže</a>
-                        </div>
-                      </li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="treninzi/zakazivanjeTreninga.html">Zakazivanje treninga</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="contact">Moj profil</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="oNama.html">O nama</a></li>
-                </ul>
+     <nav class="navbar navbar-expand-lg navbar-light fixed-top black" id="mainNav">
+            <div class="container-fluid">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="./assets/img/logo.png"
+                        class="img-fluid rounded-circle" id="logo" alt=""></a><button
+                    class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html">Početna</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Usluge
+                            </a>
+                            <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                                <div id="divTreninga">
+                                    <a class="dropdown-toggle dropdown-item " id="treningDrop" data-toggle="collapse"
+                                        data-parent="#divTreninga" aria-haspopup="true" aria-controls="oblastTreninga">
+                                        Treninzi</a>
+                                    <div class=" collapse treningCol" id="oblastTreninga">
+                                        <ul id="treningMenuCollapse">
+                                            <li> <a class="dropdown-item" href="">Pilates</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="">Yoga</a>
+                                            </li>
+                                            <li> <a class="dropdown-item" href="">Core</a>
+                                            </li>
+                                            <li> <a class="dropdown-item" href="">Cardio</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a class="dropdown-item" href="nutricionista.html">Nutricionista</a>
+                                <a class="dropdown-item" href="masaza.html">Masaže</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                href="treninzi/zakazivanjeTreninga.html">Zakazivanje treninga</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Moj profil</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="oNama.html">O nama</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    
 
     <br><br><br><br><br>
 
@@ -379,9 +407,9 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
      <!-- Core theme JS-->
-     <script src="js/scripts.js"></script>
-     <script src="./js/skripta.js"></script>
-
+     <!-- OVO ISPOD UKLJUCUJES ZA NAVIGACIJU-->
+     <script src="./js/navbarBlackWhite.js"></script>
+     <script src="./js/navbarHrefs.js"></script>
 
 </body>
 

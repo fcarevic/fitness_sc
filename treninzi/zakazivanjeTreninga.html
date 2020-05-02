@@ -20,6 +20,10 @@
   <link href="../css/styles.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="../css/stil.css">
   <link rel="stylesheet" type="text/css" href="../css/zakazivanje_treninga.css">
+  <!-- OVO ISPOD UKLJUCUJES ZA NAVIGACIJU-->
+  <link rel="stylesheet" href="../css/navBarBlackWhite.css">
+    
+  <!--------------------------------------------------------------------->
     <title>Document</title>
 </head>
   <body id="page-top">
@@ -68,16 +72,33 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive" >
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../index.html">Početna</a></li>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false">
                               Usluge
-                            </a>
-                            <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Treninzi</a> 
-                                <a class="dropdown-item" href="../nutricionista.html">Nutricionista</a> 
-                                <a class="dropdown-item" href="../masaza.html">Masaže</a>
-                            </div>
-                         </li>
+                          </a>
+                          <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                              <div id="divTreninga">
+                                  <a class="dropdown-toggle dropdown-item " id="treningDrop" data-toggle="collapse"
+                                      data-parent="#divTreninga" aria-haspopup="true" aria-controls="oblastTreninga">
+                                      Treninzi</a>
+                                  <div class=" collapse treningCol" id="oblastTreninga">
+                                      <ul id="treningMenuCollapse">
+                                          <li> <a class="dropdown-item" href="">Pilates</a>
+                                          </li>
+                                          <li><a class="dropdown-item" href="">Yoga</a>
+                                          </li>
+                                          <li> <a class="dropdown-item" href="">Core</a>
+                                          </li>
+                                          <li> <a class="dropdown-item" href="">Cardio</a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                              <a class="dropdown-item" href="nutricionista.html">Nutricionista</a>
+                              <a class="dropdown-item" href="masaza.html">Masaže</a>
+                          </div>
+                      </li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="./zakazivanjeTreninga.html">Zakazivanje treninga</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Moj profil</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../oNama.html">O nama</a></li>
@@ -256,7 +277,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
     <!-- Core theme JS-->
-    <script src="../js/zakazivanje_treninga.js"></script>     
+    <!-- OVO ISPOD UKLJUCUJES ZA NAVIGACIJU-->
+    <script src="../js/navbarBlackWhite.js"></script>
+    <script src="../js/navbarHrefs.js"></script>   
+    <script src="../js/zakazivanje_treninga.js"></script>  
+  
       
    
 </body>
