@@ -131,14 +131,40 @@ td{
     visibility: hidden;
 }
 
-.carousel-control-prev-icon2:after {
+.carousel-control-prev-icon:after {
     content: '<';
     font-size: 55px;
     color: black;
   }
   
-.carousel-control-next-icon2:after {
+.carousel-control-next-icon:after {
     content: '>';
     font-size: 55px;
     color: black;
+  }
+
+  #naslov{
+      font-size: 30pt;
+      color: darkorange;
+      font-weight: bold;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  body{
+      background-color: white;
+  }
+  .tabela{
+      background-color: white !important;
+  }
+  .gold{
+      color:gold !important;
+  }
+  .grey{
+      color: grey !important;
+  }
+  .orange{
+      color: darkorange;
+  }
+  .slika{
+      height: 150pt !important;
+      width: 100%;
   }

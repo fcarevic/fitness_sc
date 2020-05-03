@@ -22,7 +22,8 @@ Tačnije, crossfit predstavlja izuzetno intenzivno vežbanje koje uključuje nek
  //////////////////////////
 
  todo:
- - carousel izjednaci slike 
+ 
  - onload promeni da se odmah prikazu slike, ne kasnije
  - komentare odradi
  -  tekstove kod nutricioniste i masaze, promeni tekst u izvestaju 
+ - STA SE DESAVA SA ONLOAD, STO NEKAD HOCE, NEKAD NECE?
