@@ -188,18 +188,32 @@ $(document).ready(function(){
    let el = baza.get(sessionStorage.getItem("kategorija"));
    $("#naslov").text(el.naslov);
    $("#trajanje").text(el.trajanje);
-   $("#ocena").text(el.ocena);
-   $("#tezina").text(el.tezina);
+   
    $("#opis").text(el.opis);
 
-   let slike = document.getElementsByClassName("d-block");
+   let slike = document.getElementsByClassName("slika");
    for(let i =0 ; i< slike.length ; i++){
        slike[i].src = el.slikeOsnova + (i+2)+'.jpg';
    }
    
    let video = document.getElementsByTagName("iframe");
    for(let i =0 ; i< video.length ; i++){
-       video[i].src = el.video[i] ;
+       video[i].src = el.video[(i+1)%video.length] ;
    }
-
-});
+  
+   
+   for(let i =0 ; i< el.ocena ; i++){
+    $("#star"+i).removeClass("grey");
+    $("#star"+i).css({ "color": "gold"});
+    
+   }
+   
+   for(let i =0 ; i< el.tezina ; i++){
+       
+    $("#trophy"+i).removeClass("grey");
+    $("#trophy"+i).css({ "color": "gold"});
+     
+   }
+   
+}
+   );

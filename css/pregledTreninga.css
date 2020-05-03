@@ -100,3 +100,27 @@
     width: auto;
     height: 100% !important;
 }
+.card-img-top{
+    height: 150pt !important;
+}
+.gold{
+    color:gold !important;
+}
+.grey{
+    color:grey !important;
+}
+.card table td{
+    text-align: left;
+}
+.trajanje{
+    text-align: center !important;
+}
+.tezina{
+    text-align: center !important;
+}
+.card table{
+   margin: 0 auto;
+}
+.card{
+    text-align: center;
+}

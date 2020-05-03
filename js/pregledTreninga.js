@@ -162,14 +162,21 @@ function update(){
     let naslovi= document.getElementsByClassName("card-header");
     let opisi =   document.getElementsByClassName("card-text");
     let slike =  document.getElementsByClassName("card-img-top");
-    let tezine = document.getElementsByClassName("tezina");
+    
     let trajanja = document.getElementsByClassName("trajanje");
  for(let i=0 ; i< naslovi.length;i++){
      naslovi[i].innerHTML=baza[i].naslov;
-    opisi[i].innerHTML=baza[i].opis;
+   // opisi[i].innerHTML=baza[i].opis;
     slike[i].src=baza[i].slika;
-    tezine[i].innerHTML=baza[i].tezina;
-    trajanja[i].innerHTML=baza[i].trajanje;
+   
+    
+    for(let j =0 ; j< baza[i].tezina ; j++){
+       
+        $("#trophy"+(i*5+j)).removeClass("grey");
+        $("#trophy"+(i*5+j)).css({ "color": "gold"});
+         
+       }
+    trajanja[i].innerHTML=" " +baza[i].trajanje + "<sup>min<sup>" ;
     }
 
 
