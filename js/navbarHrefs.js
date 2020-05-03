@@ -50,9 +50,15 @@ $(document).ready(function(){
             case 'Zakazivanje treninga':
                 window.location=base + 'treninzi/zakazivanjeTreninga.html';
             break;
-            
-        }
 
+            case 'Moj profil':
+                window.location=base + 'mojNalog.html';
+            break;
+            
+        
+
+         
+        }
 
 
     })
