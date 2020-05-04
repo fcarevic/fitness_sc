@@ -4,7 +4,7 @@ $(document).ready(function () {
      
     "yoga1" : {
         "ime": "Yoga1",
-        "termini": ["8-10", "10-12", "12-14", "14-15", "16-18", "18-20", "20-22"], 
+        "termini": ["8:30-10", "10-12", "12-14", "14-15", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
     "pilates1" : {
         "ime": "Pilates1",
-        "termini": ["6-8", "10-12", "12-14", "14-16", "16-18", "18-20", "21-22"], 
+        "termini": ["6:30-8:30", "10-12", "12-14", "14-16", "16-18", "18-20", "21-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -140,15 +140,15 @@ $(document).ready(function () {
     
 }
 
-   if(localStorage.getItem("treninzi") == null){
-       localStorage.setItem("treninzi", JSON.stringify(treninzi));
+   if(localStorage.getItem("treninziRaspored") == null){
+       localStorage.setItem("treninziRaspored", JSON.stringify(treninzi));
    }
 
   
    var MAXMEMBER = 20;
 
    
-    treninzi = JSON.parse(localStorage.getItem("treninzi"));
+    treninzi = JSON.parse(localStorage.getItem("treninziRaspored"));
     var url = new URL(window.location.href);
     var parameter = url.searchParams.get("trening");
 
@@ -166,6 +166,14 @@ $(document).ready(function () {
     var danUNedelji = ["ponedeljak","utorak","sreda","cetvrtak","petak","subota","nedelja"];
 
       
+
+    var date = new Date();
+    var currentDay = date.getDay();
+    if( currentDay == 0) currentDay = 7;
+
+    var currentHour = date.getHours();
+    var currentMinutes = date.getMinutes();
+
     for ( let i = 0; i < 7; i++ ){
         for(let j = 1; j <= 7;j ++){
 
@@ -174,11 +182,45 @@ $(document).ready(function () {
             var regex = /^Dostupno (..|.)\/20$/;
             var text =  $("#" + i + "" + j).attr("value");
             var number = parseInt(text.match(regex)[1]);
-            console.log(number);
             if( number == MAXMEMBER ){
                 $("#" + i + "" + j).attr("disabled","disabled");
             }
-            console.log( "#" + i + "" + j );
+
+
+            if(localStorage.getItem("rezervisaniTreninzi") == null){
+                rezervisaniTreninzi = [];
+            } else {
+                rezervisaniTreninzi = JSON.parse(localStorage.getItem("rezervisaniTreninzi"));
+            }
+    
+             if ( rezervisaniTreninzi != [] && rezervisaniTreninzi.find(function(jedanTrening){
+    
+                return jedanTrening.ime == trening["ime"] && 
+                jedanTrening.termin == trening["termini"][i] && 
+                jedanTrening.dan ==  danUNedelji[j - 1] }) != null ){
+                    $("#" + i + "" + j).attr("disabled","disabled");
+            }
+            //Dodati da ne moze da rezervise ako je proslo vreme treninga 
+
+               
+            var treningName = trening.ime;
+            var dan = j;
+            var termin = trening["termini"][i];
+
+            var regex = /^(..|.):?(.|..)?-.{1,5}$/;
+            var result = termin.match(regex);
+            var treningDan = dan;
+            var treningHour = parseInt(result[1]);
+            var treningMinutes = 0;
+            if(result.length == 3){
+                treningMinutes = parseInt(result[2]);
+            }
+            
+            if( currentDay > treningDan || ( currentDay==treningDan && currentHour > treningHour) || ( currentDay==treningDan && currentHour == treningHour && currentMinutes>= treningMinutes) ){
+                $("#" + i + "" + j).attr("disabled","disabled");
+            }
+
+    
         }
     }
 
@@ -193,7 +235,7 @@ $(document).ready(function () {
         var row = parseInt(id.charAt(0));
         var col = parseInt(id.charAt(1));
 
-        treninzi = JSON.parse(localStorage.getItem("treninzi"));
+        treninzi = JSON.parse(localStorage.getItem("treninziRaspored"));
         var url = new URL(window.location.href);
         var parameter = url.searchParams.get("trening");
 
@@ -206,23 +248,14 @@ $(document).ready(function () {
             rezervisaniTreninzi = JSON.parse(localStorage.getItem("rezervisaniTreninzi"));
         }
 
-         if ( rezervisaniTreninzi != [] && rezervisaniTreninzi.find(function(jedanTrening){
-
-            return jedanTrening.ime == trening["ime"] && 
-            jedanTrening.termin == trening["termini"][row] && 
-            jedanTrening.dan ==  danUNedelji[col - 1] }) != null ){
-            alert("Vec ste rezervisali ovaj trening");
-            return;
-        }
+        
 
         number++;
-        console.log(number);
-        if( number == MAXMEMBER ){
-           $(this).attr("disabled","disabled");
-        }
+        console.log(number);  
+        $(this).attr("disabled","disabled");
         $(this).attr("value", "Dostupno " + number + "/20");
         trening[danUNedelji[col - 1]][row]++;
-        localStorage.setItem("treninzi", JSON.stringify(treninzi));
+        localStorage.setItem("treninziRaspored", JSON.stringify(treninzi));
         rezervisaniTreninzi.push({
                 "ime":trening["ime"],
                 "termin": trening["termini"][row], 
@@ -230,6 +263,7 @@ $(document).ready(function () {
         })
         console.log(rezervisaniTreninzi);
         localStorage.setItem("rezervisaniTreninzi", JSON.stringify(rezervisaniTreninzi));
+       
     })
 
 });
