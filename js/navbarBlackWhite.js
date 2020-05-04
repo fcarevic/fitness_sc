@@ -19,7 +19,7 @@ $(document).ready(function(){
     
  $(".dropdown-item").on({
             mouseenter: function(){
-                if ($("#mainNav").offset().top > 100){
+                if ($("#mainNav").offset().top >= 100){
                         $(this).removeClass("white");
                         $(this).addClass("black");
 
@@ -31,7 +31,7 @@ $(document).ready(function(){
                     }
                 },
             mouseleave: function(){
-                if ($("#mainNav").offset().top > 100)
+                if ($("#mainNav").offset().top >= 100)
                {
                    $(this).removeClass("black");
                $(this).addClass("white");

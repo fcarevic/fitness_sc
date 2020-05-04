@@ -214,6 +214,7 @@ $(document).ready(function(){
     $("#trophy"+i).css({ "color": "gold"});
      
    }
+   $(".okvir").css({"display":"initial"});
    
 }
    );

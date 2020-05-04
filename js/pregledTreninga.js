@@ -137,6 +137,8 @@ $(".card input").click(function(){
 });
 
       update();
+        
+      $(".okvir").css({"display":"initial"});
 
 
 
