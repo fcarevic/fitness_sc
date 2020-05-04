@@ -31,15 +31,16 @@ $(document).ready(function () {
      };
      
 
-     var date = new Date();
-     var currentDay = date.getDay();
-     if( currentDay == 0) currentDay = 7;
-
-     var currentHour = date.getHours();
-     var currentMinutes = date.getMinutes();
- 
+   
     zakazani.forEach(trening => {
             var buttonEnd = bittonEndActive;
+            var date = new Date();
+            var currentDay = date.getDay();
+            if( currentDay == 0) currentDay = 7;
+       
+            var currentHour = date.getHours();
+            var currentMinutes = date.getMinutes();
+        
            
            
            
@@ -58,7 +59,10 @@ $(document).ready(function () {
                 treningMinutes = parseInt(result[1]);
             }
             console.log(treningMinutes);
-            if( currentDay > treningDan || ( currentDay==treningDan && currentHour >= treningHour) || ( currentDay==treningDan && currentHour == treningHour - 1 && currentMinutes  + 30 >=  treningMinutes) ){
+
+            currentHour = currentHour +  Math.floor((currentMinutes + 30) / 60); 
+            currentMinutes =  Math.floor((currentMinutes + 30)%60);
+            if( currentDay > treningDan || ( currentDay==treningDan && currentHour > treningHour) || ( currentDay==treningDan && currentHour == treningHour && currentMinutes  >=  treningMinutes) ){
                 buttonEnd = buttonEndDisabled;
             }
 

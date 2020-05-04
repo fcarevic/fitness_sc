@@ -212,10 +212,11 @@ $(document).ready(function () {
             var treningDan = dan;
             var treningHour = parseInt(result[1]);
             var treningMinutes = 0;
-            if(result.length == 3){
-                treningMinutes = parseInt(result[2]);
+            regex = /^.{1,2}:(.|..)-.{1,5}$/;
+            var result = termin.match(regex);
+            if(result != null){
+                treningMinutes = parseInt(result[1]);
             }
-            
             if( currentDay > treningDan || ( currentDay==treningDan && currentHour > treningHour) || ( currentDay==treningDan && currentHour == treningHour && currentMinutes>= treningMinutes) ){
                 $("#" + i + "" + j).attr("disabled","disabled");
             }
