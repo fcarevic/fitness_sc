@@ -73,26 +73,38 @@
         </nav>
         <br><br><br><br>
         <div class="container">
+           
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Zakazivanje treninga</li>
-                </ol>
+                <div class="row">
+                    <div class="col-sm-10 col-lg-11">
+                        <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page" id="bread1">Moj profil</li>
+                        </ol>
+                    </div>
+                    <div class="col-sm-2 col-lg-1">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page" id="lang">en</li>
+                            </ol>
+                    </div>
+
+
+            </div>
             </nav>
         </div>
 
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <table class="table">
-                        <thead class="thead-dark">
+                    <table class="table" id="">
+                        <thead class="thead-dark zakazaniTreninziTabelaCela" >
                             <tr>
-                                <th scope="col">Ime</th>
-                                <th  scope="col">Dan</th>
-                                <th  scope="col">Termin</th>
-                                <th  scope="col">Otkazi</th>
+                                <th scope="col" id="0">Ime</th>
+                                <th  scope="col" id="1" >Dan</th>
+                                <th  scope="col" id="2">Termin</th>
+                                <th  scope="col" id="3">Otkazi</th>
                             </tr>
                         </thead>
-                        <tbody id = "zakazaniTreninziTabela">
+                        <tbody id = "zakazaniTreninziTabelaTelo">
 
                         </tbody>
                     </table>

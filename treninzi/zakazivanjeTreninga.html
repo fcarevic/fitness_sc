@@ -37,22 +37,22 @@
               <i class="fas fa-arrow-left"></i>
           </div>
 
-          <div class="sidebar-header">
-              <h3>Izaberite tip treninga</h3>
+          <div class="sidebar-header" >
+              <h3 id="izaberiteTipTeninga">Izaberite tip treninga</h3>
           </div>
 
           <ul class="list-unstyled components">
-              <li class="active">
-                  <span id="yoga"> Yoga</span>
+              <li >
+                  <a id="yoga">Yoga&nbsp;</a>
               </li>
               <li>
-                  <span id="pilates">Pilates</span>
+                  <a id="pilates">Pilates&nbsp;</a>
               </li>
               <li>
-                 <span id="core">Core</span>
+                 <a id="core">Core&nbsp;</a>
               </li>
               <li>
-              <span id="cardio">Cardio</span>
+              <a id="cardio">Cardio&nbsp;</a>
               </li>
           </ul>
       </nav>
@@ -64,7 +64,7 @@
                   <img src="../assets/img/logo.png" class="img-fluid rounded-circle" id="logo" alt="">&nbsp;
                   <button type="button" id="sidebarCollapse" class="btn btn-dark odaberi">
                     <i class="fas fa-align-left"></i>
-                    <span>Izaberi tip</span>
+                    <span id="buttonTip">Izaberi tip</span>
                   </button>
                 
                 </a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -112,154 +112,179 @@
         <div class="container">
           <br><br><br><br>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">Zakazivanje treninga</li>
-            </ol>
+            <div class="row ">
+              <div class="col-sm-10 col-md-10 col-lg-11">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page" id="breadcrumbzak">Zakazivanje treninga</li>
+                    
+                  </ol>  
+              </div>
+            <div class="col-sm-2 col-md-2 col-lg-1">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="#" id="lang">en</a></li>
+              </ol>
+            </div>
+          
+          </div>
           </nav>
             <div class = "row text-center">
               <div class="col-md-12">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
                   <div class="col mb-4 pilatesTip">
                     <div class="card border-info h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/pilates/klasicniPilates-1.jpg" class="card-img-top" alt="../assets/slike/pilates.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title1</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title" id ="pilates1">Klasični pilates</h5>
+                        <!-- <p class="card-text">Pilates je inovativni i siguran mind&body program. 
+                          Vežbajući Pilates razvijate svesnost o svom telu, dobru posturu i lake i graciozne pokrete.
+                        </p> -->
                       </div>
                       <div class="card-footer">
-                          <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=pilates1" role="button">Izaberi</a></small>
+                          <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=pilates1" role="button">Izaberi</a></small>
                       </div>
                     </div>
                   </div>
                   <div class="col mb-4 pilatesTip">
                     <div class="card border-info  h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top pilates" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/pilates/reformerPilates.jpg" class="card-img-top pilates" alt="../assets/slike/pilates/reformerPilates.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title2</h5>
-                        <p class="card-text">This is a short card.</p>
+                        <h5 class="card-title" id ="" id ="pilates2">Reformer pilates</h5>
+                        <!-- <p class="card-text">Sam trening je dinamičniji, zabavniji i delotvorniji a
+                           rezultati evidentniji u dalekom kraćem vremenu nego kod pilatesa na podlozi.
+                            Na naprednom vežbačkom nivou, u jednom Reforemer času postiže se i efekat
+                             sagorevanja viška masnoće paralelno sa izduživanjem i učvršćivanjem mišića. 
+                             Istovremeno, svaka Reformer vežba po prirodi i isteže mišiće koje vežba.
+                        </p> -->
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=pilates2" role="button">Izaberi</a></small>
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=pilates2" role="button">Izaberi</a></small>
                       </div>
                     </div>
                   </div>
                   <div class="col mb-4 pilatesTip">
                     <div class="card border-info  h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top pilates" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/pilates/stottPilates.jpg" class="card-img-top pilates" alt="../assets/slike/pilates.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title3</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        <h5 class="card-title" id ="pilates3">Stott pilates</h5>
+                        <!-- <p class="card-text"> Uz pomoć STOTT PILATESA očuvaćete gipkost, izdužiti mišiće i
+                           što je još važnije imaćete pravilno držanje tela, jer ćete ojačati mišiće koji čine potporu kičmenog stuba.
+                        </p> -->
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=pilates3" role="button">Izaberi</a></small>
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=pilates3" role="button">Izaberi</a></small>
                       </div>
                     </div>
                   </div>
                   <div class="col mb-4 yogaTip">
                     <div class="card border-info  h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/yoga/kharma/kharma3.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title4</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title" id ="yoga1">Karma joga</h5>
+                        <!-- <p class="card-text">Duhovni rast prihvatanja rada bez očekivanja rezultata i nagrada,  oslobađanje ega</p> -->
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=yoga1" role="button">Izaberi</a></small>
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=yoga1" role="button">Izaberi</a></small>
                       </div>
                     </div>
                   </div>
                   <div class="col mb-4 yogaTip">
                     <div class="card border-info  h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/yoga/raja/raja1.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title5</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title" id ="yoga2">Radža joga</h5>
+                        <!-- <p class="card-text">Vežbanje položaja (asana), disanja, koncentracije i meditacije a radi postizanja konačnog oslobođenja </p> -->
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=yoga2" role="button">Izaberi</a></small>
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=yoga2" role="button">Izaberi</a></small>
                        </div>
                     </div>
                   </div>
                   <div class="col mb-4 yogaTip">
                     <div class="card border-info  h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/yoga/hatha/hatha1.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title6</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title" id ="yoga3">Hata joga</h5>
+                        <!-- <p class="card-text">Pravi balans mirovanja (stagnacije) i pokreta,
+                           a njen primarni fokus je na fizičkim vežbama (asanama) i joga disanju (pranajama).
+                        </p> -->
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=yoga3" role="button">Izaberi</a></small>
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=yoga3" role="button">Izaberi</a></small>
                        </div>
                     </div>
                   </div>
                   <div class="col mb-4 coreTip">
                     <div class="card border-info  h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/core/crossfit/crossfit1.jpg" class="card-img-top yoga" alt="../assets/slike/core/crossfit/crossfit1.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title7</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                      <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=core1" role="button">Izaberi</a></small>
+                        <h5 class="card-title" id ="core1">Crossfit</h5>
+                        <!-- <p class="card-text">Crossfit će vas učiniti jačim,
+                           fit u kratkom vremenskom periodu, toniranim i
+                            mišićavim putem različitih tipova treninga.
+                            -->
+                        </div> 
+                      <div class="card-footer"> 
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=core1" role="button">Izaberi</a></small>
                       </div>
                     </div>
                   </div>
                   <div class="col mb-4 coreTip">
                     <div class="card border-info  h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/core/abdomenal/abdomenal1.jpg" class="card-img-top yoga" alt="../assets/slike/core/abdomenal/abdomenal1.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title8</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title" id ="core2">Abdomenalni trening</h5>
+                        <!-- <p class="card-text">Dovedite stomak do iygleda o kakvom ste uvek sanjali!</p> -->
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=core2" role="button">Izaberi</a></small>
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=core2" role="button">Izaberi</a></small>
                       </div>
                     </div>
                   </div>
                   <div class="col mb-4 coreTip">
                     <div class="card border-info  h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/core/classic/classic1.jpg" class="card-img-top yoga" alt="../assets/slike/core/abdomenal/abdomenal1.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title9</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title" id ="core3">Klasični trening</h5>
+                        <!-- <p class="card-text">Intenzivan trening jačanja celog tela, zabavan i pre svega efektivan!</p> -->
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=core3" role="button">Izaberi</a></small>
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=core3" role="button">Izaberi</a></small>
                       </div>
                     </div>
                   </div>
-                  <div class="col mb-4 crossfitTip">
+                  <div class="col mb-4 cardioTip">
                     <div class="card border-info  h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/cardio/box/box1.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title10</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title" id ="cardio1">Kardio Boks</h5>
+                        <!-- <p class="card-text">Cardio box – rocks! Da, kardio boks razbija! Teško je opisati zadovoljstvo ove vrste treninga onom ko to nije probao.</p> -->
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=cardio1" role="button">Izaberi</a></small>
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=cardio1" role="button">Izaberi</a></small>
                       </div>
                     </div>
                   </div>
-                  <div class="col mb-4 crossfitTip">
+                  <div class="col mb-4 cardioTip">
                     <div class="card  border-info h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/cardio/running/running1.jpg" class="card-img-top yoga" alt="../assets/slike/cardio/running/running1.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title11</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
+                        <h5 class="card-title" id ="cardio2">Trčanje</h5>
+                        <!-- <p class="card-text">Opustite mozak, sagorite kalorije, družite se!</p>  -->
+                       </div>
                       <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=cardio2" role="button">Izaberi</a></small>
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme" href="./trening.html?trening=cardio2" role="button">Izaberi</a></small>
                       </div>
                     </div>
                   </div>
-                  <div class="col mb-4 crossfitTip">
+                  <div class="col mb-4 cardioTip">
                     <div class="card  border-info h-100">
-                      <img src="../assets/slike/pilates.jpg" class="card-img-top yoga" alt="../assets/slike/pilates.jpg">
+                      <img src="../assets/slike/cardio/mix/mix1.jpg" class="card-img-top yoga" alt="../assets/slike/cardio/mix/mix1.jpg">
                       <div class="card-body">
-                        <h5 class="card-title">Card title12</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title" id ="cardio3">Kružni trening</h5>
+                        <!-- <p class="card-text">Najdinamičniji, najzabavniji i najproduktivniji vid treninga. Rezultati primetni u najkraćem roku</p> -->
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted"><a class="btn btn-success" href="./trening.html?trening=cardio3" role="button">Izaberi</a></small>
+                        <small class="text-muted"><a class="btn btn-info izaberiDugme"  href="./trening.html?trening=cardio3" role="button">Izaberi</a></small>
                       </div>
                     </div>
                   </div>
