@@ -50,9 +50,9 @@ var terminToSerbian = {
 
 imenaTreningaSerbian = {
     "Karma Yoga": "Karma Yoga",
-    "Radza Yoga": "Raja Yoga",
+    "Radža Yoga": "Raja Yoga",
     "Hata Yoga" : "Hata Yoga",
-    "Klasični pilates" : "Classical pilates",
+    "Klasični pilates" : "Klasični pilates",
     "Reformer pilates" :"Reformer pilates",
     "Stott pilates":"Stott pilates",
     "Crossfit" :"Crossfit",
@@ -67,9 +67,9 @@ imenaTreningaSerbian = {
 
 imenaTreningaEnglish = {
     "Karma Yoga": "Karma Yoga",
-    "Radza Yoga": "Radza Yoga",
+    "Radža Yoga": "Radza Yoga",
     "Hata Yoga" : "Hata Yoga",
-    "Klasični pilates" : "Klasični pilates",
+    "Klasični pilates" : "Classical pilates",
     "Reformer pilates" :"Reformer pilates",
     "Stott pilates":"Stott pilates",
     "Crossfit" :"Crossfit",
@@ -83,7 +83,7 @@ imenaTreningaEnglish = {
 
 imenaTreninga = {
     "Karma Yoga": "Karma Yoga",
-    "Radza Yoga": "Radza Yoga",
+    "Radža Yoga": "Radža Yoga",
     "Hata Yoga" : "Hata Yoga",
     "Klasični pilates" : "Klasični pilates",
     "Reformer pilates" :"Reformer pilates",
@@ -95,7 +95,7 @@ imenaTreninga = {
     "Trčanje": "Trčanje",
     "Kružni trening" : "Kružni trening",
     "Karma Yoga" : "Karma Yoga" ,
-    "Raja Yoga" : "Radza Yoga",
+    "Raja Yoga" : "Radža Yoga",
     "Hata Yoga" : "Hata Yoga",
     "Classical pilates" :"Klasični pilates",
     "Reformer pilates" :"Reformer pilates",
@@ -113,6 +113,7 @@ imenaTreninga = {
 var daniToUse = treningToDanSerbian;
 var treningToUse = imenaTreningaSerbian;
 var nemaZakazanih = "Nemate zakazazanih treninga";
+
 if(localStorage.getItem("lang")==null || localStorage.getItem("lang")=="rs"){
         var header = headerSerbian;
         var buttonOtkazi = "Otkazi";

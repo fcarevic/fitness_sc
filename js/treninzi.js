@@ -3,20 +3,20 @@ $(document).ready(function () {
    var treninzi = { 
      
     "yoga1" : {
-        "ime": "Karma joga",
-        "termini": ["8:30-10", "10-12", "12-14", "14-15", "16-18", "18-20", "20-22"], 
-        "ponedeljak": [0,0,0,0,0,0,0],
+        "ime": "Karma Yoga",
+        "termini": ["8-10", "12-14", "12-14", "14-15", "16-18", "18-20", "20-22"], 
+        "ponedeljak": [-1,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
         "cetvrtak": [0,0,0,0,0,0,0],
         "petak": [0,0,0,0,0,0,0],
         "subota": [0,0,0,0,0,0,0],
-        "nedelja": [0,0,0,0,0,0,0]
+        "nedelja": [20,0,0,0,0,0,0]
     },
 
      "yoga2" : {
-        "ime": "Radža joga",
-        "termini": ["8-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "ime": "Radža Yoga",
+        "termini": ["6-8", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -27,7 +27,7 @@ $(document).ready(function () {
     },
 
     "yoga3": {
-        "ime": "Hata joga",
+        "ime": "Hata Yoga",
         "termini": ["8-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
@@ -40,25 +40,25 @@ $(document).ready(function () {
 
     "pilates1" : {
         "ime": "Klasični pilates",
-        "termini": ["6:30-8:30", "10-12", "12-14", "14-16", "16-18", "18-20", "21-22"], 
-        "ponedeljak": [0,0,0,0,0,0,0],
+        "termini": ["14-16", "18-20", "12-14", "14-16", "16-18", "18-20", "21-22"], 
+        "ponedeljak": [20,20,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
         "cetvrtak": [0,0,0,0,0,0,0],
-        "petak": [0,0,0,0,0,0,0],
+        "petak": [11,0,0,0,0,0,0],
         "subota": [0,0,0,0,0,0,0],
-        "nedelja": [0,0,0,0,0,0,0]
+        "nedelja": [20,20,0,0,0,20,00]
     },
     "pilates2" : {
         "ime": "Reformer pilates",
-        "termini": ["8-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "termini": ["16-18", "12-13", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
         "cetvrtak": [0,0,0,0,0,0,0],
         "petak": [0,0,0,0,0,0,0],
         "subota": [0,0,0,0,0,0,0],
-        "nedelja": [0,0,0,0,0,0,0]
+        "nedelja": [20,0,0,0,0,0,0]
     },
     "pilates3" : {
         "ime": "Stott pilates",
@@ -73,7 +73,7 @@ $(document).ready(function () {
     },
     "core1" : {
         "ime": "Crossfit",
-        "termini": ["8-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "termini": ["16:30-18:30", "18:30-20:30", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -84,7 +84,7 @@ $(document).ready(function () {
     },
     "core2" : {
         "ime": "Abdomenalni trening",
-        "termini": ["8-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "termini": ["15-16:30", "18:30-20:30", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -95,7 +95,7 @@ $(document).ready(function () {
     },
     "core3" : {
         "ime": "Klasični trening",
-        "termini": ["8-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "termini": ["21-23", "23-1", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -106,7 +106,7 @@ $(document).ready(function () {
     },
     "cardio1": {
         "ime": "Kardio Boks",
-        "termini": ["8-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "termini": ["8-10", "12-14", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -117,7 +117,7 @@ $(document).ready(function () {
     },
     "cardio2" : {
         "ime": "Trčanje",
-        "termini": ["8-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "termini": ["10-12", "14-16", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -128,7 +128,7 @@ $(document).ready(function () {
     },
     "cardio3" : {
         "ime": "Kružni trening",
-        "termini": ["8-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "termini": ["6-8", "16-18", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -142,7 +142,7 @@ $(document).ready(function () {
 
 imenaTreningaSerbian = {
     "yoga1":   "Karma Yoga",
-    "yoga2": "Radza Yoga",
+    "yoga2": "Radža Yoga",
     "yoga3": "Hata Yoga",
     "pilates1": "Klasični pilates",
     "pilates2": "Reformer pilates",
@@ -196,6 +196,7 @@ imenaTreningaEnglish = {
    var breadpart2 = "imeTreninga";
    var dostupanTrening = "Dostupno";
    var imenaToUSe = imenaTreningaSerbian;
+   var canceled ="Otkazan";
 
 
    if(localStorage.getItem("lang") == null || localStorage.getItem("lang") == "rs"){
@@ -228,6 +229,7 @@ imenaTreningaEnglish = {
             breadpart1 = "Training reservation";
             var dostupanTrening = "Available";
             imenaToUSe = imenaTreningaEnglish;
+            canceled ="Otkazan";
             $("#lang").text("rs");
        }
    }
@@ -242,10 +244,18 @@ $("#lang").click(function(){
     if($(this).text() == "en"){
             imenaToUSe = imenaTreningaEnglish;
 
-            for ( let i = 0; i < 7; i++ ){
+            for ( let i = 0; i < 2; i++ ){
                 for(let j = 1; j <= 7;j ++){
-        
+
                     var vrednost = $("#" + i + "" + j).attr("value");
+
+                    if(vrednost == canceled){
+                        $("#" + i + "" + j).attr("value","Canceled"); 
+                        $("#" + i + "" + j).attr("disabled","disabled");  
+                        continue;
+                    }
+                
+          
                     if(vrednost == zakazanTrening) {
                         $("#" + i + "" + j).attr("value",  "    Reserved   ");
                     } else {
@@ -264,7 +274,7 @@ $("#lang").click(function(){
                 }
             }
 
-
+        canceled = "Canceled"
         daniZaTabelu = danUNedeljiEngleski;
         zakazanTrening = "    Reserved   ";
         prosaoTrening = "     Finished    ";
@@ -274,11 +284,20 @@ $("#lang").click(function(){
         localStorage.setItem("lang", "en");
     }  else {
         imenaToUSe = imenaTreningaSerbian;
-      
-        for ( let i = 0; i < 7; i++ ){
+        canceled ="Canceled";
+        for ( let i = 0; i < 2; i++ ){
             for(let j = 1; j <= 7;j ++){
+
+                
     
                 var vrednost = $("#" + i + "" + j).attr("value");
+
+                
+                if(vrednost == canceled){
+                    $("#" + i + "" + j).attr("value","Otkazan"); 
+                    $("#" + i + "" + j).attr("disabled","disabled");  
+                    continue;
+                }
                 if(vrednost == zakazanTrening) {
                     $("#" + i + "" + j).attr("value",  "   Rezervisan  ");
                 } else {
@@ -298,7 +317,7 @@ $("#lang").click(function(){
         }
 
     
-
+        canceled = "Otkazan"
         daniZaTabelu = danUNedeljiSrpski;
         zakazanTrening = "   Rezervisan  ";
         prosaoTrening = "     Prosao    ";
@@ -346,7 +365,7 @@ $("#lang").click(function(){
    $("#tipTreninga").text(imenaToUSe[parameter]);
 
    
-    for ( let i = 0; i < 7; i++ ){
+    for ( let i = 0; i < 2; i++ ){
      
             $("#" + i + "" + 0).text(trening["termini"][i]);
         
@@ -361,8 +380,14 @@ $("#lang").click(function(){
     var currentHour = date.getHours();
     var currentMinutes = date.getMinutes();
 
-    for ( let i = 0; i < 7; i++ ){
+    for ( let i = 0; i < 2; i++ ){
         for(let j = 1; j <= 7;j ++){
+
+            if(trening[danUNedelji[j - 1]][i] == -1){
+                $("#" + i + "" + j).attr("value",canceled); 
+                $("#" + i + "" + j).attr("disabled","disabled");  
+                continue;
+            }
 
             $("#" + i + "" + j).attr("value","  " + dostupanTrening + " " + (20 - trening[danUNedelji[j - 1]][i]));
             
