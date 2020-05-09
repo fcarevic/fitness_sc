@@ -16,6 +16,7 @@ function scrolled(){
 $(document).ready(function(){
     scrolled();
     $(window).scroll(scrolled);
+   
     
  $(".dropdown-item").on({
             mouseenter: function(){
@@ -68,3 +69,4 @@ $(document).ready(function(){
 
 
 });
+

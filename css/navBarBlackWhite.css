@@ -23,3 +23,6 @@
     font-weight: bold;
  
 }
+.navbar-toggler{
+    background-color: lightgrey !important;
+}

@@ -4,116 +4,7 @@
     * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-creative/blob/master/LICENSE)
     */
    $(document).ready(function(){
-  /*  // Smooth scrolling using jQuery easing
-    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-        if (target.length) {
-          $('html, body').animate({
-            scrollTop: (target.offset().top - 72)
-          }, 1000, "easeInOutExpo");
-          return false;
-        }
-      }
-    });
   
-    // Closes responsive menu when a scroll trigger link is clicked
-    $('.js-scroll-trigger').click(function() {
-      $('.navbar-collapse').collapse('hide');
-    });
-  
-    // Activate scrollspy to add active class to navbar items on scroll
-    $('body').scrollspy({
-      target: '#mainNav',
-      offset: 75
-    });
-    
-    // Collapse Navbar
-    var navbarCollapse = function() {
-      if ($("#mainNav").offset().top > 50) {
-        $("#mainNav").addClass("navbar-scrolled");
-        $(".dropdown-item").css({
-          "color": "black",
-          "background-color": "white"
-        })
-      } else {
-        $(".dropdown-item").css({
-          "color": "lightgrey",
-          "background-color": "black"
-        })
-        $("#mainNav").removeClass("navbar-scrolled");
-      }
-    };
-    // Collapse now if page is not at top
-    navbarCollapse();
-    // Collapse the navbar when page is scrolled
-    $(window).scroll(navbarCollapse);
-  
-    // Magnific popup calls
-    $('#portfolio').magnificPopup({
-      delegate: 'a',
-      type: 'image',
-      tLoading: 'Loading image #%curr%...',
-      mainClass: 'mfp-img-mobile',
-      gallery: {
-        enabled: true,
-        navigateByImgClick: true,
-        preload: [0, 1]
-      },
-      image: {
-        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-      }
-    });
-  
-// End of use strict
-
-
-    $(".dropdown-item").on({
-        mouseenter: function(){
-            if ($("#mainNav").offset().top > 50)
-             $(this).css({
-                    "color" :"white",
-                    "background-color" : "black" 
-                });
-            else 
-            $(this).css({
-                "background-color" : "white" ,
-                "color" : "black"
-            });
-                },
-        mouseleave: function(){
-            if ($("#mainNav").offset().top > 50)
-            $(this).css({
-                "color": "black",
-                "background-color" : "white"
-            });
-            else  $(this).css({
-                "color" :"lightgrey",
-                "background-color" : "black" 
-            });
-
-
-        }
-
-
-    });
-    $("#treningDrop").on({
-      mouseenter: function(){
-          $(".treningCol").collapse('show');
-      },
-      
-      
-});
-
-$(".treningCol").on({
-    mouseleave: function(){
-        
-      $(".treningCol").collapse('hide');
-    }
-});
-
-*/
     $("#pdf").click(function(){
        
       $("#name").css({"border-color" : "gray"});
@@ -190,4 +81,74 @@ $(".treningCol").on({
 
 
 
-})
+});
+
+let nutricionista_opis_srpski = 'Lična dijeta ili lični jelovnik koji sastavlja nutricionista prema svakoj pojedinačnoj osobi može imati za cilj dobijanje na težini, mršavljenje ili održanje telesne težine (mase) uz stvaranje zdravih navika u ishrani.'
+let nutricionista_opis_engleski= 'Personal diet by nitritiosnist is made regarding individue, with main purpose for weight gain, weight loss or weight balance. It helps you prevent obesity and anorexia';
+let maser_opis_engleski= 'Proffesional massages, for your personal problem! Release neck, back or any other type of pain. Our masseur are one of a kind!';
+let maser_opis_srpski='Profesionalne masaže, prilagođene vašim problemima! Oslobodite se bola u leđima, vratu ili drugim delovima tela. Naši maseri su najbolji.'
+let placeholders_eng=['First name', 'Last name', 'Phone number '  ];
+let textarea_placeholder_eng="Short description of your problem";
+let placeholders_srb=['Ime', 'Prezime', 'Telefon '  ];
+let textarea_placeholder_srb="Kratak opis problema";
+let dugmetekst_SRB= 'POŠALJI ';
+let dugmetekst_ENG= 'SEND ';
+let adresa_srb= `<br/>Ulica 3
+<br/>34117 Palilula
+<br/>Srbija</p>`;
+let adresa_eng= `<br/>Ulica 3
+<br/>34117 Palilula
+<br/>Serbia</p>`;
+let adresaTekst= "Adresa:";
+let tekstTelefon="Telefon:";
+
+
+let placeholders=placeholders_srb;
+let opis= nutricionista_opis_srpski;
+let txt_area_placeholder=textarea_placeholder_srb;
+let dugmetekst= dugmetekst_SRB;
+let adresa = adresa_srb;
+let radnoVremeTekst= "Radno vreme:";
+let moreinfo= "Više informacija";
+
+
+
+
+function switchLanguage(){
+  if(window.location.href.indexOf('masaza')!=-1){
+    opis= maser_opis_srpski;
+    
+  }else opis=nutricionista_opis_srpski;
+
+  if(localStorage.getItem("lang") =='en'){
+    if(window.location.href.indexOf('masaza')!=-1){
+      opis= maser_opis_engleski;
+      
+    }else opis=nutricionista_opis_engleski;
+    placeholders=placeholders_eng;
+    
+     txt_area_placeholder=textarea_placeholder_eng;
+     dugmetekst= dugmetekst_ENG;
+     adresa = adresa_eng;
+     adresaTekst= "Adress:";
+     tekstTelefon="Phone number:";
+    radnoVremeTekst= "Open:";
+    moreinfo="More info";
+
+  }
+
+  document.getElementById("name").placeholder= placeholders[0];
+  document.getElementById("prezime").placeholder= placeholders[1];
+  document.getElementById("telefon").placeholder= placeholders[2];
+  document.getElementById("message").placeholder= txt_area_placeholder;
+  document.getElementById("posalji").textContent=dugmetekst;
+  document.getElementById("adresaTekst").textContent=adresaTekst;
+  document.getElementById("tekstTelefon").textContent=tekstTelefon;
+  document.getElementById("radnoVreme").textContent=radnoVremeTekst;
+  document.getElementById("moreinfo").textContent=moreinfo;
+  document.getElementById("opis").textContent=opis;
+  document.getElementById("adresaa").innerHTML=adresa;
+
+
+
+}

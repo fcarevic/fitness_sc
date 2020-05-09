@@ -19,10 +19,15 @@ if( url.indexOf('pregledTreninga/')!= -1 ){
 
 
 $(document).ready(function(){
+    switchLanguage();
+    $("#lang").click(function(){
+        switchLanguage();
+    })
     $(".nav-item a , .dropdown-item").attr("href", "#");
     $("nav ul li a").click(function(){
         switch($(this).text()){
-            case 'Početna': 
+            case 'Početna':
+            case 'Home': 
             
             window.location=base + 'index.html';
             break;
@@ -31,27 +36,34 @@ $(document).ready(function(){
             case 'Pilates':
             case 'Core':
             case 'Cardio': 
+            case 'Joga':
+            case 'Kardio':
             sessionStorage.setItem("tip",$(this).text());
             window.location=base + 'pregledTreninga/pregledTipa.html';
 
             break;
 
             case 'Nutricionista':
+            case 'Nutritionist':
                 window.location=base + 'nutricionista.html';
             break;
             
             case 'Masaže':
+            case 'Massage' :
                 window.location=base + 'masaza.html';
             break;
             case 'O nama':
+            case 'About':
                 window.location=base + 'oNama.html';
             break;
 
             case 'Zakazivanje treninga':
+            case 'Reservations':
                 window.location=base + 'treninzi/zakazivanjeTreninga.html';
             break;
 
             case 'Moj profil':
+            case 'Profile':
                 window.location=base + 'mojNalog.html';
             break;
             
@@ -61,7 +73,9 @@ $(document).ready(function(){
         }
 
 
-    })
+    });
+
+    $('body').css({"display" : "initial"});
 
 });
 
@@ -82,4 +96,42 @@ function loadPage(name){
 
 
     }
+}
+
+let sprski_nav = ['Početna', 'Usluge', 'Zakazivanje treninga', 'Moj profil', 'O nama'];
+let engleski_nav = ['Home', 'Services', 'Reservations', 'Profile', 'About'];
+let sprski_usluge = ['Treninzi','Pilates', 'Joga', 'Core','Kardio' ,'Nutricionista', 'Masaže'];
+let engleski_usluge = ['Practices', 'Pilates', 'Yoga', 'Core','Cardio' ,'Nutritionist', 'Massage'];
+let srpski_footer = 'Copyright © 2020 - Dušan Stijovic i Filip Carević, ETF Beograd';
+let engleski_footer= 'Copyright © 2020 - Dušan Stijovic i Filip Carević, Faculty of Electrical Engineering, Belgrade';
+let nav=[];
+let usl= [];
+let footertext=[];
+function switchLanguage(){
+        let lng = localStorage.getItem("lang");
+        
+        if(lng!='en'){
+                nav=sprski_nav;
+                usl=sprski_usluge;
+                footertext=srpski_footer;
+        } else {
+            nav= engleski_nav; 
+            usl=engleski_usluge;
+            footertext=engleski_footer;
+        }
+        $("footer div div").text(footertext);
+
+        let main= document.getElementById("mainNav");
+        let navItems= main.getElementsByClassName("nav-link");
+        for(let i =0 ; i<navItems.length; i++){
+            navItems[i].textContent= nav[i];
+        }
+
+        let divTreninga = document.getElementById("mainNav");
+        let items = divTreninga.getElementsByClassName("dropdown-item");
+        console.log(items.length);
+        for(let i =0 ; i<items.length; i++){
+            items[i].textContent= usl[i];
+        }
+
 }

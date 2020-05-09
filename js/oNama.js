@@ -144,6 +144,7 @@ if($(this).text()=="en"){
     callUS = "Call US"
     officeLocation = "Adress"
     $("#lang").text("rs");
+    localStorage.setItem("lang", "en");
 
 } else{
     positions = positionsSerbian;
@@ -156,6 +157,7 @@ if($(this).text()=="en"){
     callUS = "Pozovite nas"
     officeLocation = "Adesa"
     $("#lang").text("en");
+    localStorage.setItem("lang", "rs");
 
 }
 
