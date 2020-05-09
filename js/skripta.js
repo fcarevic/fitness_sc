@@ -1,6 +1,8 @@
 
 
-var treninzi = ['Crossfit','Klasični pilates',  'Kružni trening'];
+
+
+var treninzi=[];
 
 $(document).ready(function(){
 
@@ -110,7 +112,7 @@ let englski_kontakt=[ 'Contact us', 'For more info call or e-mail us'];
 function languageChange(){
     let carousel = srpski_carousel;
     let kontakt= srpski_kontakt;
-    let treninzi= srpski_treninzi;
+     treninzi= srpski_treninzi;
     let najtrazenijiTekst= 'Najtraženiji programi';
     if(localStorage.getItem("lang")=='en'){
       carousel=engleski_carousel;

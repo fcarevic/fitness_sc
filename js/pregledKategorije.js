@@ -57,7 +57,7 @@ let pilates = {
     "reformer": {
         "naslov": "Reformer pilates",
         "opis": " Sam trening je dinamičniji, zabavniji i delotvorniji a rezultati evidentniji u dalekom kraćem vremenu nego kod pilatesa na podlozi. Na naprednom vežbačkom nivou, u jednom Reforemer času postiže se i efekat sagorevanja viška masnoće paralelno sa izduživanjem i učvršćivanjem mišića. Istovremeno, svaka Reformer vežba po prirodi i isteže mišiće koje vežba.",
-        "slikeOsnova": "../assets/slike/pilates/reformerPilates",
+        "slikeOsnova": "../assets/slike/pilates/reformerPilates/pilates",
         "trajanje": 60,
         "tezina": 4,
         "ocena": 4,
@@ -69,13 +69,14 @@ let pilates = {
     "stott": {
         "naslov": "Stott pilates",
         "opis": "      Uz pomoć STOTT PILATESA očuvaćete gipkost, izdužiti mišiće i što je još važnije imaćete pravilno držanje tela, jer ćete ojačati mišiće koji čine potporu kičmenog stuba.",
-        "slikeOsnova": "../assets/slike/pilates/stottPilates",
+        "slikeOsnova": "../assets/slike/pilates/stottPilates/pilates",
         "trajanje": 30,
         "tezina": 5,
         "ocena": 5,
         "video": [
-            "https://www.youtube.com/embed/A9VIAS4yKSk",
-            "https://www.youtube.com/embed/le1iFVxW8eY"
+            
+            "https://www.youtube.com/embed/le1iFVxW8eY",
+            'https://www.youtube.com/embed/8m7cJ-dlXz8'
             
         ]
     },
@@ -221,7 +222,7 @@ let pilates_en = {
     "reformer": {
         "naslov": "Reformer pilates",
         "opis": " Exercises are more dinamycal, entertaining and effective , results are expected much faster than pilates on hard floor. Advanced levels classes  burn fat, strech and stengthen muscles. At the same time, every Reformer exercise naturally strech crucial muscles .",
-        "slikeOsnova": "../assets/slike/pilates/reformerPilates",
+        "slikeOsnova": "../assets/slike/pilates/reformerPilates/pilates",
         "trajanje": 60,
         "tezina": 4,
         "ocena": 4,
@@ -233,13 +234,14 @@ let pilates_en = {
     "stott": {
         "naslov": "Stott pilates",
         "opis": " STOTT PILATESA helps you perserve flexibility, stretch muscles and, most importantly, corrects body posture, by strengthening spine muscles.",
-        "slikeOsnova": "../assets/slike/pilates/stottPilates",
+        "slikeOsnova": "../assets/slike/pilates/stottPilates/pilates",
         "trajanje": 30,
         "tezina": 5,
         "ocena": 5,
         "video": [
-            "https://www.youtube.com/embed/A9VIAS4yKSk",
-            "https://www.youtube.com/embed/le1iFVxW8eY"
+            
+            "https://www.youtube.com/embed/le1iFVxW8eY",
+            'https://www.youtube.com/embed/8m7cJ-dlXz8'
             
         ]
     },
@@ -317,7 +319,7 @@ let cardio_en = {
     "kruzni": {
         "naslov": "Circular training",
         "opis": "The most entertaining, effective and intensive  training with fastest results",
-        "slikeOsnova": "../assets/slike/cardio/mix/mi/x",
+        "slikeOsnova": "../assets/slike/cardio/mix/mix",
         "trajanje": 30,
         "tezina": 5,
         "ocena": 4,

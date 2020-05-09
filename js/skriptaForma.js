@@ -4,7 +4,7 @@
     * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-creative/blob/master/LICENSE)
     */
    $(document).ready(function(){
-  
+    LanguageSwitch();
     $("#pdf").click(function(){
        
       $("#name").css({"border-color" : "gray"});
@@ -150,7 +150,7 @@ let opis_forma=[];
 
 
 
-function switchLanguage(){
+function LanguageSwitch(){
   if(window.location.href.indexOf('masaza')!=-1){
     opis= maser_opis_srpski;
     opis_forma=opisFormaMasaza_srp;
