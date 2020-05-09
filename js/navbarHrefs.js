@@ -20,6 +20,7 @@ if( url.indexOf('pregledTreninga/')!= -1 ){
 
 $(document).ready(function(){
     switchLanguage();
+    
     $("#lang").click(function(){
         switchLanguage();
     })
@@ -109,6 +110,7 @@ let usl= [];
 let footertext=[];
 function switchLanguage(){
         let lng = localStorage.getItem("lang");
+        console.log('usao');
         
         if(lng!='en'){
                 nav=sprski_nav;

@@ -63,12 +63,35 @@
             
             if(!flag) return;
             
+            let tipUsluge= Nutricionista;
+            if(window.location.href.indexOf('masaza')!=-1){
+              if(localStorage.getItem('lang')=='en')
+              tipUsluge='Massage';
+              else tipUsluge='Masaža';
+
+            } else if (localStorage.getItem('lang')=='en'){
+              tipUsluge='Nutritionist';
+            }
+            let zahtev= 'Zahtev za uslugama';
+            let prava = `Privatne informacije su zaštićene zakonom o zaštiti ličnih informacija.
+            <br> Hvala na poverenju!`;
+             if(localStorage.getItem('lang')=='en'){
+               zahtev= 'Services request';
+               prava= 'Protection of privacy is under jurisdiction of Serbia law';  
+             }
+             zahtev+=' - ' + tipUsluge;
+            
             //stampanje
             let el= document.getElementById("forma").cloneNode(true);
             $(el).addClass("col-12 pt-2");
             let stampa= document.createElement("div");
             stampa.setAttribute("class", "p-4");
-            stampa.innerHTML = '<div class="text-center"> <h2 class="title-section"><span class="title-regular">Zahtev za uslugama</h2> </div><hr class="title-underline " />  <p>Privatne informacije su zaštićene zakonom o zaštiti ličnih informacija. <br> Hvala na poverenju!</p>';
+            stampa.innerHTML = `<div class="text-center"> 
+                <h2 class="title-section">
+                <span class="title-regular">${zahtev}zahtev</h2> 
+                </div><hr class="title-underline " /> 
+                 <p> ${prava}
+                  </p>`;
             stampa.appendChild(el);
 
             html2pdf(stampa);
@@ -93,6 +116,17 @@ let placeholders_srb=['Ime', 'Prezime', 'Telefon '  ];
 let textarea_placeholder_srb="Kratak opis problema";
 let dugmetekst_SRB= 'POŠALJI ';
 let dugmetekst_ENG= 'SEND ';
+let slike_tekst_masaze_srp= ['Masaža leđa', 'Masaža nogu', 'Šijacu masaža'];
+let slike_tekst_masaze_eng=[ 'Back masage', 'Leg massage', 'Shiatzu massage'];
+let slike_tekst_nutr_srp= ['Ivana', 'Ishrana', 'Maja'];
+let slike_tekst_nutr_eng=[ 'Ivana', 'Diet', 'Maja'];
+let opisFormaNutricionista_srp='Zakažite pregled kod nutricioniste!';
+let opisFormaNutricionista_eng='Schedule an appointment with our nutritionist!';
+let opisFormaMasaza_srp='Zakažite masažu!';
+let opisFormaMasaza_eng='Schedule massage!';
+
+
+
 let adresa_srb= `<br/>Ulica 3
 <br/>34117 Palilula
 <br/>Srbija</p>`;
@@ -110,6 +144,8 @@ let dugmetekst= dugmetekst_SRB;
 let adresa = adresa_srb;
 let radnoVremeTekst= "Radno vreme:";
 let moreinfo= "Više informacija";
+let slike_tekst=[];
+let opis_forma=[];
 
 
 
@@ -117,14 +153,24 @@ let moreinfo= "Više informacija";
 function switchLanguage(){
   if(window.location.href.indexOf('masaza')!=-1){
     opis= maser_opis_srpski;
+    opis_forma=opisFormaMasaza_srp;
+    slike_tekst=slike_tekst_masaze_srp
     
-  }else opis=nutricionista_opis_srpski;
+  }else {opis=nutricionista_opis_srpski;
+  opis_forma=opisFormaNutricionista_srp;
+    slike_tekst=slike_tekst_nutr_srp;
+}
 
   if(localStorage.getItem("lang") =='en'){
     if(window.location.href.indexOf('masaza')!=-1){
       opis= maser_opis_engleski;
+      opis_forma=opisFormaMasaza_eng;
+      slike_tekst=slike_tekst_masaze_eng;
       
-    }else opis=nutricionista_opis_engleski;
+    }else{
+      slike_tekst=slike_tekst_nutr_eng;
+      opis_forma=opisFormaNutricionista_eng;
+    opis=nutricionista_opis_engleski;}
     placeholders=placeholders_eng;
     
      txt_area_placeholder=textarea_placeholder_eng;
@@ -148,6 +194,12 @@ function switchLanguage(){
   document.getElementById("moreinfo").textContent=moreinfo;
   document.getElementById("opis").textContent=opis;
   document.getElementById("adresaa").innerHTML=adresa;
+  let slikaTekst = document.getElementsByClassName("slikaTekst");
+  for(let i=0; i< slikaTekst.length;i++) {
+    slikaTekst[i].textContent=slike_tekst[i];
+  }
+  document.getElementById("opisForma").textContent=opis_forma;
+
 
 
 
