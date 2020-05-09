@@ -132,7 +132,7 @@ $(document).ready(function () {
             tipBiranje = "Choose type";
             tipBiranjeHeader = "Choose training type";
             breadcrumbzak = "Training reservation";
-            textlang = "sr";
+            textlang = "rs";
         } else {
             imenaTreninga = imenaTreningaSerbian;
             imeDugmeta = "Izaberi";
