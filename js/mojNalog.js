@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    
+
+
     
     var startRow = "<tr>"
     var startCol = "<td>"
@@ -113,10 +114,12 @@ imenaTreninga = {
 var daniToUse = treningToDanSerbian;
 var treningToUse = imenaTreningaSerbian;
 var nemaZakazanih = "Nemate zakazazanih treninga";
+var buttonOtkazi = "Otkazi";
+var header = headerEnglish;
 
 if(localStorage.getItem("lang")==null || localStorage.getItem("lang")=="rs"){
-        var header = headerSerbian;
-        var buttonOtkazi = "Otkazi";
+        header = headerSerbian;
+        buttonOtkazi = "Otkazi";
         $("#bread1").text("Moj profil");
         daniToUse = treningToDanSerbian;
         $("#lang").text("en");
@@ -129,8 +132,8 @@ if(localStorage.getItem("lang")==null || localStorage.getItem("lang")=="rs"){
 
 }
 else{
-    var header = headerEnglish;
-    var buttonOtkazi = "Cancel";
+    header = headerEnglish;
+    buttonOtkazi = "Cancel";
     $("#bread1").text("My profil")
     $("#lang").text("rs");
     daniToUse = treningToDanEnglish;
@@ -138,7 +141,6 @@ else{
     nemaZakazanih = "You don't have any training scheduled";
 
 }
-
 
 
 
@@ -150,8 +152,8 @@ for(let i = 0;i<=3;i++){
 
 $("#lang").click(function(){
     if($(this).text() == "en"){
-        var header = headerEnglish;
-        var buttonOtkazi = "Cancel";
+        header = headerEnglish;
+        buttonOtkazi = "Cancel";
         $("#bread1").text("My profil")
         $("#lang").text("rs");
         treningToUse = imenaTreningaEnglish;
@@ -161,8 +163,8 @@ $("#lang").click(function(){
         daniToUse = treningToDanEnglish;
 
     } else{
-        var header = headerSerbian;
-        var buttonOtkazi = "Otkazi";
+        header = headerSerbian;
+        buttonOtkazi = "Otkazi";
         $("#bread1").text("Moj profil");
         daniToUse = treningToDanSerbian;
         $("#lang").text("en");
@@ -180,132 +182,28 @@ $("#lang").click(function(){
           startRow + "<td colspan =" + "4" + ">" + nemaZakazanih + endCol + endRow  
         )
     } else {
-      
-        var zakazani = JSON.parse(sessionStorage.getItem("rezervisaniTreninzi"));
-            
-        var buttonStart = '<input type="button" class="btn btn-danger otkazi" value=' +  buttonOtkazi;
-        var buttonEndDisabled = " disabled>";
-        var bittonEndActive = ">";
-        var danUNedelji = {
-            "nedelja " : 7,
-            "ponedeljak" : 1,
-            "utorak" : 2,
-            "sreda" : 3,
-            "cetvrtak" : 4,
-            "petak" : 5,
-            "subota" :6 
-     };
-     
-
-
-   
-    zakazani.forEach(trening => {
-            var buttonEnd = bittonEndActive;
-            var date = new Date();
-            var currentDay = date.getDay();
-            if( currentDay == 0) currentDay = 7;
-       
-            var currentHour = date.getHours();
-            var currentMinutes = date.getMinutes();
-        
-           
-           
-           
-            var dan = trening.dan;
-            var termin = trening.termin;
-
-            var regex = /^(..|.):?(.|..)?-.{1,5}$/;
-            var result = termin.match(regex);
-            var treningDan = danUNedelji[dan];
-            var treningHour = parseInt(result[1]);
-            treningMinutes = 0;
-            console.log(treningMinutes);
-            regex = /^.{1,2}:(.|..)-.{1,5}$/;
-            var result = termin.match(regex);
-            if(result != null){
-                treningMinutes = parseInt(result[1]);
-            }
-            console.log(treningMinutes);
-
-            currentHour = currentHour +  Math.floor((currentMinutes + 30) / 60); 
-            currentMinutes =  Math.floor((currentMinutes + 30)%60);
-            if( currentDay > treningDan || ( currentDay==treningDan && currentHour > treningHour) || ( currentDay==treningDan && currentHour == treningHour && currentMinutes  >=  treningMinutes) ){
-                buttonEnd = buttonEndDisabled;
-            }
-
-            $("#zakazaniTreninziTabelaTelo").append(
-                startRow 
-                + startCol +  treningToUse[trening.ime] + endCol
-                + startCol + daniToUse[trening.dan] + endCol 
-                + startCol + trening.termin + endCol
-                + startCol + buttonStart + buttonEnd + endCol
-                + endRow  
-            )
-
-
-
-
-
-        });
-
+     prikaziTreninge();
     }
 
     for(let i = 0;i<=3;i++){
         $("#" + i).text(header[i]);
     }
-    $(".otkazi").click(function () {
-
+    addHandler();
     
-        var treningName = $(this).closest('tr').find('td:eq(0)').text();
-        var dan = $(this).closest('tr').find('td:eq(1)').text();
-        var termin = $(this).closest('tr').find('td:eq(2)').text();
- 
- 
- 
-        var zakazani = JSON.parse(sessionStorage.getItem("rezervisaniTreninzi"));
- 
-        
-        trening =  zakazani.find(function(jedanTrening){
-         return (jedanTrening.ime.localeCompare(imenaTreninga[treningName]) == 0 && 
-         jedanTrening.termin.localeCompare(termin)==0 && 
-         jedanTrening.dan.localeCompare(terminToSerbian[dan]) == 0)
-     });
- 
-        zakazani =  zakazani.filter(function(jedanTrening){
-             return !(jedanTrening.ime.localeCompare(imenaTreninga[treningName]) == 0 && 
-             jedanTrening.termin.localeCompare(termin)==0 && 
-             jedanTrening.dan.localeCompare(terminToSerbian[dan]) == 0)
-         });
- 
-         $(this).parent().parent().remove();
-         sessionStorage.setItem("rezervisaniTreninzi",JSON.stringify(zakazani));
-         var treninzi = JSON.parse(localStorage.getItem("treninziRaspored"));
-       
- 
-         if(zakazani.length == 0){
-                 $("#zakazaniTreninziTabelaTelo").append(
-                     startRow + "<td colspan =" + "4" + ">" + nemaZakazanih + endCol + endRow  
-                   )
-             }
-        var trening = treninzi[trening.defaultIme];   
-        var redNumber = trening["termini"].indexOf(termin);
-        trening[terminToSerbian[dan.toLowerCase()]][redNumber]--;
-        localStorage.setItem("treninziRaspored", JSON.stringify(treninzi));
-     })
 })
-
-
-
-
 
     if(sessionStorage.getItem("rezervisaniTreninzi") == null || JSON.parse(sessionStorage.getItem("rezervisaniTreninzi")).length == 0){
         $("#zakazaniTreninziTabelaTelo").append(
           startRow + "<td colspan =" + "4" + ">" + nemaZakazanih + endCol + endRow  
         )
     } else {
-      
+        prikaziTreninge();
+
+    }
+
+    function prikaziTreninge(){
         var zakazani = JSON.parse(sessionStorage.getItem("rezervisaniTreninzi"));
-            
+                
         var buttonStart = '<input type="button" class="btn btn-danger otkazi" value=' +  buttonOtkazi;
         var buttonEndDisabled = " disabled>";
         var bittonEndActive = ">";
@@ -319,99 +217,141 @@ $("#lang").click(function(){
             "subota" :6 
      };
      
-
-
-   
-    zakazani.forEach(trening => {
-            var buttonEnd = bittonEndActive;
-            var date = new Date();
-            var currentDay = date.getDay();
-            if( currentDay == 0) currentDay = 7;
-       
-            var currentHour = date.getHours();
-            var currentMinutes = date.getMinutes();
+    
+    
+     zakazani.forEach(trening => {
+        var buttonEnd = bittonEndActive;
+        var date = new Date();
+        date.setTime(date.getTime() + 30*60*1000);
         
+       
+       var begining = trening.pocetak;
+       var end = trening.kraj;
+       
+      
+    
+       if (date.getTime()>=begining){
+         buttonEnd = buttonEndDisabled;
+       }
+    
+        $("#zakazaniTreninziTabelaTelo").append(
+            startRow 
+            + startCol +  treningToUse[trening.ime] + endCol
+            + startCol + daniToUse[trening.dan] + endCol 
+            + startCol + trening.termin + endCol
+            + startCol + buttonStart + buttonEnd + endCol
+            + endRow  
+        )
+    
+    
+    
+    
+    
+    });
+    
+    }
+    
+    function addHandler(){
+        $(".otkazi").click(function () {
+            var danToBroj = {
+                "nedelja" : 7,
+                "ponedeljak" : 1,
+                "utorak" : 2,
+                "sreda" : 3,
+                "cetvrtak" : 4,
+                "petak" : 5,
+                "subota" :6 
+         };
+        
+            var treningName = $(this).closest('tr').find('td:eq(0)').text();
+            var dan = $(this).closest('tr').find('td:eq(1)').text();
+            var termin = $(this).closest('tr').find('td:eq(2)').text();
+     
+     
+     
+            var zakazani = JSON.parse(sessionStorage.getItem("rezervisaniTreninzi"));
+     
+            var begining = getTerminDateBegining(termin, danToBroj[terminToSerbian[dan]]);
+            var end = getTerminDateEnd(termin, danToBroj[terminToSerbian[dan]]);
+
+            
+            trening =  zakazani.find(function(jedanTrening){
+             return (jedanTrening.ime.localeCompare(imenaTreninga[treningName]) == 0 && 
+             jedanTrening.pocetak == begining.getTime() && 
+             jedanTrening.kraj == end.getTime())
+            });
+     
+            zakazani =  zakazani.filter(function(jedanTrening){
+                 return !(jedanTrening.ime.localeCompare(imenaTreninga[treningName]) == 0 && 
+                 jedanTrening.pocetak==begining.getTime() && 
+                 jedanTrening.kraj == end.getTime())
+             });
+     
+             $(this).parent().parent().remove();
+             sessionStorage.setItem("rezervisaniTreninzi",JSON.stringify(zakazani));
+             var treninzi = JSON.parse(localStorage.getItem("treninziRaspored"));
            
-           
-           
-            var dan = trening.dan;
-            var termin = trening.termin;
-
-            var regex = /^(..|.):?(.|..)?-.{1,5}$/;
-            var result = termin.match(regex);
-            var treningDan = danUNedelji[dan];
-            var treningHour = parseInt(result[1]);
-            treningMinutes = 0;
-            console.log(treningMinutes);
-            regex = /^.{1,2}:(.|..)-.{1,5}$/;
-            var result = termin.match(regex);
-            if(result != null){
-                treningMinutes = parseInt(result[1]);
-            }
-            console.log(treningMinutes);
-
-            currentHour = currentHour +  Math.floor((currentMinutes + 30) / 60); 
-            currentMinutes =  Math.floor((currentMinutes + 30)%60);
-            if( currentDay > treningDan || ( currentDay==treningDan && currentHour > treningHour) || ( currentDay==treningDan && currentHour == treningHour && currentMinutes  >=  treningMinutes) ){
-                buttonEnd = buttonEndDisabled;
-            }
-
-            $("#zakazaniTreninziTabelaTelo").append(
-                startRow 
-                + startCol +  treningToUse[trening.ime] + endCol
-                + startCol + daniToUse[trening.dan] + endCol 
-                + startCol + trening.termin + endCol
-                + startCol + buttonStart + buttonEnd + endCol
-                + endRow  
-            )
-
-
-
-
-
-        });
-
+     
+             if(zakazani.length == 0){
+                     $("#zakazaniTreninziTabelaTelo").append(
+                         startRow + "<td colspan =" + "4" + ">" + nemaZakazanih + endCol + endRow  
+                       )
+                 }
+            var trening = treninzi[trening.defaultIme];   
+            var redNumber = trening["termini"].indexOf(termin);
+            trening[terminToSerbian[dan.toLowerCase()]][redNumber]--;
+            localStorage.setItem("treninziRaspored", JSON.stringify(treninzi));
+         })
     }
 
 
-     $(".otkazi").click(function () {
+    addHandler();
 
+    function getTerminDateBegining(termin, dayOfWeek){
+        var regex = /^(..|.):?(.|..)?-.{1,5}$/;
+        var result = termin.match(regex);
+        var treningHour = parseInt(result[1]);
+        var treningMinutes = 0;
+        regex = /^.{1,2}:(.|..)-.{1,5}$/;
+        var result = termin.match(regex);
+        if(result != null){
+            treningMinutes = parseInt(result[1]);
+        }
     
-       var treningName = $(this).closest('tr').find('td:eq(0)').text();
-       var dan = $(this).closest('tr').find('td:eq(1)').text();
-       var termin = $(this).closest('tr').find('td:eq(2)').text();
-
-
-
-       var zakazani = JSON.parse(sessionStorage.getItem("rezervisaniTreninzi"));
-
-       
-       trening =  zakazani.find(function(jedanTrening){
-        return (jedanTrening.ime.localeCompare(imenaTreninga[treningName]) == 0 && 
-        jedanTrening.termin.localeCompare(termin)==0 && 
-        jedanTrening.dan.localeCompare(terminToSerbian[dan]) == 0)
-    });
-
-       zakazani =  zakazani.filter(function(jedanTrening){
-            return !(jedanTrening.ime.localeCompare(imenaTreninga[treningName]) == 0 && 
-            jedanTrening.termin.localeCompare(termin)==0 && 
-            jedanTrening.dan.localeCompare(terminToSerbian[dan]) == 0)
-        });
-
-        $(this).parent().parent().remove();
-        sessionStorage.setItem("rezervisaniTreninzi",JSON.stringify(zakazani));
-        var treninzi = JSON.parse(localStorage.getItem("treninziRaspored"));
+        var begining = new Date();
+        var day = begining.getDay();
+        if  (day == 0) day = 7;
+        var dif = dayOfWeek - day ;
+        begining.setMinutes(parseInt(treningMinutes));
+        begining.setHours(parseInt(treningHour));
+        begining.setSeconds(0);
+        begining.setMilliseconds(0);
+        begining.setTime(begining.getTime() + dif*24*60*60*1000);
       
-
-        if(zakazani.length == 0){
-                $("#zakazaniTreninziTabelaTelo").append(
-                    startRow + "<td colspan =" + "4" + ">" + nemaZakazanih + endCol + endRow  
-                  )
-            }
-       var trening = treninzi[trening.defaultIme];   
-       var redNumber = trening["termini"].indexOf(termin);
-       trening[terminToSerbian[dan.toLowerCase()]][redNumber]--;
-       localStorage.setItem("treninziRaspored", JSON.stringify(treninzi));
-    })
-
+        return begining;
+    }
+    
+    function getTerminDateEnd(termin, dayOfWeek){
+        var regex = /^.{1,5}-(..|.):?(.|..)?$/;
+        var result = termin.match(regex);
+        var treningHour = parseInt(result[1]);
+        var treningMinutes = 0;
+        regex = /^.{1,5}-.{1,2}:(.|..)$/;
+        var result = termin.match(regex);
+        if(result != null){
+            treningMinutes = parseInt(result[1]);
+        }
+    
+        var end = new Date();
+        var day = end.getDay();
+        if  (day == 0) day = 7;
+        var dif = dayOfWeek - day ;
+        end.setMinutes(parseInt(treningMinutes));
+        end.setHours(parseInt(treningHour));
+        end.setSeconds(0);
+        end.setMilliseconds(0);
+        end.setTime(end.getTime() + dif*24*60*60*1000);
+        return end;
+    }
 });
+

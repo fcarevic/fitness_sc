@@ -16,7 +16,7 @@ $(document).ready(function () {
 
      "yoga2" : {
         "ime": "Radža Yoga",
-        "termini": ["6-8", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "termini": ["21:10-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -197,31 +197,24 @@ imenaTreningaEnglish = {
    var dostupanTrening = "Dostupno";
    var imenaToUSe = imenaTreningaSerbian;
    var canceled ="Otkazan";
+   var imateZakazaniUDatomTerminu = "Imate zakazan trening u datom terminu";
 
 
    if(localStorage.getItem("lang") == null || localStorage.getItem("lang") == "rs"){
   
-  
-        // for(let i = 0; i< 4; i++)
-        //     for(let j = 1; j<=3;j++)
-        //          treninzi[treninziBase[i]+j]["ime"] = imenaTreningaSerbian[treninziBase[i]+j]
-
         daniZaTabelu = danUNedeljiSrpski;
         zakazanTrening = "   Rezervisan  ";
         prosaoTrening = "     Prosao    ";
         breadpart1 = "Rezervisanje treninga";
         dostupanTrening = "Dostupno";
         imenaToUSe = imenaTreningaSerbian;
-       
+        imateZakazaniUDatomTerminu = "Imete zakazan trening u datom terminu";
         $("#lang").text("en");
         
        
 
    }else {
        if(localStorage.getItem("lang")=="en"){
-            // for(let i = 0; i< 4; i++)
-            //     for(let j = 1; j<=3;j++)
-            //         treninzi[treninziBase[i]+j]["ime"] = imenaTreningaEnglish[treninziBase[i]+j]
 
             daniZaTabelu = danUNedeljiEngleski;
             zakazanTrening = "    Reserved   ";
@@ -230,6 +223,7 @@ imenaTreningaEnglish = {
             var dostupanTrening = "Available";
             imenaToUSe = imenaTreningaEnglish;
             canceled ="Otkazan";
+            imateZakazaniUDatomTerminu = "You have training in this termin";          
             $("#lang").text("rs");
        }
    }
@@ -255,7 +249,6 @@ $("#lang").click(function(){
                         continue;
                     }
                 
-          
                     if(vrednost == zakazanTrening) {
                         $("#" + i + "" + j).attr("value",  "    Reserved   ");
                     } else {
@@ -282,6 +275,7 @@ $("#lang").click(function(){
         dostupanTrening = "Available";
         $("#lang").text("rs");
         localStorage.setItem("lang", "en");
+        imateZakazaniUDatomTerminu = "You have training in that";
     }  else {
         imenaToUSe = imenaTreningaSerbian;
         canceled ="Canceled";
@@ -325,6 +319,8 @@ $("#lang").click(function(){
         dostupanTrening = "Dostupno";
         $("#lang").text("en");
         localStorage.setItem("lang", "rs");
+        imateZakazaniUDatomTerminu = "Imate zakazan trening u datom terminu";
+
     }
     
 
@@ -341,18 +337,13 @@ $("#lang").click(function(){
     $("#bread1").text(breadpart1);
     $("#bread2").text(breadpart2);
 
-    
-        
 
-   
 })
 
 
  
    var MAXMEMBER = 20;
 
-   
-    
     var url = new URL(window.location.href);
     var parameter = url.searchParams.get("trening");
 
@@ -366,20 +357,14 @@ $("#lang").click(function(){
 
    
     for ( let i = 0; i < 2; i++ ){
-     
-            $("#" + i + "" + 0).text(trening["termini"][i]);
-        
+            $("#" + i + "" + 0).text(trening["termini"][i]);   
     }
 
       
 
     var date = new Date();
-    var currentDay = date.getDay();
-    if( currentDay == 0) currentDay = 7;
-
-    var currentHour = date.getHours();
-    var currentMinutes = date.getMinutes();
-
+   
+  
     for ( let i = 0; i < 2; i++ ){
         for(let j = 1; j <= 7;j ++){
 
@@ -403,6 +388,9 @@ $("#lang").click(function(){
             }
 
 
+            termin = trening["termini"][i];
+            var begining = getTerminDateBegining(termin,j);
+            var end = getTerminDateEnd(termin, j);
             if(sessionStorage.getItem("rezervisaniTreninzi") == null){
                 rezervisaniTreninzi = [];
             } else {
@@ -410,31 +398,17 @@ $("#lang").click(function(){
             }
     
              if ( rezervisaniTreninzi != [] && rezervisaniTreninzi.find(function(jedanTrening){
-    
                 return jedanTrening.ime == trening["ime"] && 
-                jedanTrening.termin == trening["termini"][i] && 
-                jedanTrening.dan ==  danUNedelji[j - 1] }) != null ){
+                  jedanTrening.pocetak == begining.getTime() &&
+                  jedanTrening.kraj == end.getTime();
+                }) != null ){
                     $("#" + i + "" + j).attr("disabled","disabled");
                     $("#" + i + "" + j).attr("value",zakazanTrening);
-            }
-            //Dodati da ne moze da rezervise ako je proslo vreme treninga 
+                }
+   
 
-               
-            var treningName = trening.ime;
-            var dan = j;
-            var termin = trening["termini"][i];
 
-            var regex = /^(..|.):?(.|..)?-.{1,5}$/;
-            var result = termin.match(regex);
-            var treningDan = dan;
-            var treningHour = parseInt(result[1]);
-            var treningMinutes = 0;
-            regex = /^.{1,2}:(.|..)-.{1,5}$/;
-            var result = termin.match(regex);
-            if(result != null){
-                treningMinutes = parseInt(result[1]);
-            }
-            if( currentDay > treningDan || ( currentDay==treningDan && currentHour > treningHour) || ( currentDay==treningDan && currentHour == treningHour && currentMinutes>= treningMinutes) ){
+            if(date.getTime()>begining.getTime()){
                 $("#" + i + "" + j).attr("disabled","disabled");
                 $("#" + i + "" + j).attr("value", prosaoTrening);
             }
@@ -445,9 +419,6 @@ $("#lang").click(function(){
 
 
     $(".scheduleTrening").click(function(){
-
-
-          
         if( dostupanTrening == "Dostupno" )
                  var regex = /^.*Dostupno (..|.)$/;
         else 
@@ -471,6 +442,22 @@ $("#lang").click(function(){
             rezervisaniTreninzi = JSON.parse(sessionStorage.getItem("rezervisaniTreninzi"));
         }
 
+     var begining = getTerminDateBegining(trening["termini"][row], col);
+      var end = getTerminDateEnd(trening["termini"][row], col);
+     
+        found = false;
+        rezervisaniTreninzi.forEach(jedanTrening => {
+            if(begining.getTime() >= jedanTrening.pocetak && begining.getTime() <jedanTrening.kraj ||
+            end.getTime()>jedanTrening.pocetak && end.getTime()<=jedanTrening.kraj ){
+                found = true;
+            }
+            
+        });
+
+        if(found){
+            alert(imateZakazaniUDatomTerminu);
+            return;
+        }
         
 
         number++;
@@ -480,11 +467,14 @@ $("#lang").click(function(){
        
         trening[danUNedelji[col - 1]][row]++;
         localStorage.setItem("treninziRaspored", JSON.stringify(treninzi));
+              
         rezervisaniTreninzi.push({
                 "ime":trening["ime"],
                 "termin": trening["termini"][row], 
                 "dan" : danUNedelji[col - 1],
-                "defaultIme": parameter
+                "pocetak":begining.getTime(),
+                "kraj":end.getTime(), 
+                "defaultIme":parameter
         })
         console.log(rezervisaniTreninzi);
         sessionStorage.setItem("rezervisaniTreninzi", JSON.stringify(rezervisaniTreninzi));
@@ -493,4 +483,53 @@ $("#lang").click(function(){
 
     localStorage.setItem("treninziRaspored", JSON.stringify(treninzi));
 
+
+    function getTerminDateBegining(termin, dayOfWeek){
+        var regex = /^(..|.):?(.|..)?-.{1,5}$/;
+        var result = termin.match(regex);
+        var treningHour = parseInt(result[1]);
+        var treningMinutes = 0;
+        regex = /^.{1,2}:(.|..)-.{1,5}$/;
+        var result = termin.match(regex);
+        if(result != null){
+            treningMinutes = parseInt(result[1]);
+        }
+    
+        var begining = new Date();
+        var day = begining.getDay();
+        if  (day == 0) day = 7;
+        var dif = dayOfWeek - day ;
+        begining.setMinutes(parseInt(treningMinutes));
+        begining.setHours(parseInt(treningHour));
+        begining.setSeconds(0);
+        begining.setMilliseconds(0);
+        begining.setTime(begining.getTime() + dif*24*60*60*1000);
+      
+        return begining;
+    }
+    
+    function getTerminDateEnd(termin, dayOfWeek){
+        var regex = /^.{1,5}-(..|.):?(.|..)?$/;
+        var result = termin.match(regex);
+        var treningHour = parseInt(result[1]);
+        var treningMinutes = 0;
+        regex = /^.{1,5}-.{1,2}:(.|..)$/;
+        var result = termin.match(regex);
+        if(result != null){
+            treningMinutes = parseInt(result[1]);
+        }
+    
+        var end = new Date();
+        var day = end.getDay();
+        if  (day == 0) day = 7;
+        var dif = dayOfWeek - day ;
+        end.setMinutes(parseInt(treningMinutes));
+        end.setHours(parseInt(treningHour));
+        end.setSeconds(0);
+        end.setMilliseconds(0);
+        end.setTime(end.getTime() + dif*24*60*60*1000);
+        return end;
+    }
 });
+
+
