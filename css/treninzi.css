@@ -5,12 +5,7 @@
 
 
 .prosiri{
-    min-width: 100%;
-    max-width: 100%;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+   
 }
 
 a, a:hover, a:focus {
@@ -19,3 +14,17 @@ a, a:hover, a:focus {
     transition: all 0.3s;
 }
 
+
+@media (max-width: 480px) { 
+
+    .prosiri{
+        min-width: 100%;
+        max-width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+
+    }
+
+ }

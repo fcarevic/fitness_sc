@@ -5,7 +5,7 @@ $(document).ready(function () {
     "yoga1" : {
         "ime": "Karma Yoga",
         "termini": ["8-10", "12-14", "12-14", "14-15", "16-18", "18-20", "20-22"], 
-        "ponedeljak": [-1,0,0,0,0,0,0],
+        "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
         "cetvrtak": [0,0,0,0,0,0,0],
