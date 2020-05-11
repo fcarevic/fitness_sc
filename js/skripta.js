@@ -64,6 +64,12 @@ $(document).ready(function(){
 
   });
   languageChange();
+  $("#lang").click(function(){
+      if(localStorage.getItem('lang')=='en')
+      localStorage.setItem('lang', 'rs');
+      else localStorage.setItem('lang','en');
+      languageChange();
+  })
 
   $('body').css({"display" : "initial"});
   
@@ -108,16 +114,25 @@ let engleski_treninzi= ['Crossfit', 'Classic pilates', 'Circular training'];
 
 let srpski_kontakt = ['Kontaktirajte nas', 'Za više informacija o pozovite broj ili pošaljite e-mail.'];
 let englski_kontakt=[ 'Contact us', 'For more info call or e-mail us'];
-
+let broadcumb_srpski ="Početna";
+let broadcumb_en ="Home";
+let broadcumb= [];
+let jezik_srp= 'rs';
+let jezik_eng= 'eng';
+let jezik=[];
 function languageChange(){
     let carousel = srpski_carousel;
     let kontakt= srpski_kontakt;
      treninzi= srpski_treninzi;
     let najtrazenijiTekst= 'Najtraženiji programi';
+    jezik=jezik_srp;
+    broadcumb = broadcumb_srpski;
     if(localStorage.getItem("lang")=='en'){
+        jezik=jezik_eng;
       carousel=engleski_carousel;
       treninzi=engleski_treninzi;
       kontakt=englski_kontakt;  
+      broadcumb= broadcumb_en;
       najtrazenijiTekst= 'Most visited programs';
     }
 
@@ -137,6 +152,10 @@ function languageChange(){
         p.textContent=carousel[i].p;
     }
     $("#h2Najtrazeniji").text(najtrazenijiTekst);
+
+
+    $("#link1").text(broadcumb);
+    $("#lang").text(jezik);
 
     
 

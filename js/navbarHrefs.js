@@ -94,6 +94,9 @@ function loadPage(name){
         case "prikazKategorije":
             window.location= base+"pregledTreninga/pregledKategorije.html"
             break;
+        case "prikazTipa":
+            window.location= base+"pregledTreninga/pregledTipa.html"
+            break;
 
 
     }
@@ -108,6 +111,7 @@ let engleski_footer= 'Copyright © 2020 - Dušan Stijovic i Filip Carević, Facu
 let nav=[];
 let usl= [];
 let footertext=[];
+
 function switchLanguage(){
         let lng = localStorage.getItem("lang");
         console.log('usao');
@@ -135,5 +139,5 @@ function switchLanguage(){
         for(let i =0 ; i<items.length; i++){
             items[i].textContent= usl[i];
         }
-
+       
 }

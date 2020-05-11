@@ -134,7 +134,7 @@ if(localStorage.getItem("lang")==null || localStorage.getItem("lang")=="rs"){
 else{
     header = headerEnglish;
     buttonOtkazi = "Cancel";
-    $("#bread1").text("My profil")
+    $("#bread1").text("My profile")
     $("#lang").text("rs");
     daniToUse = treningToDanEnglish;
     treningToUse = imenaTreningaEnglish;
@@ -154,7 +154,7 @@ $("#lang").click(function(){
     if($(this).text() == "en"){
         header = headerEnglish;
         buttonOtkazi = "Cancel";
-        $("#bread1").text("My profil")
+        $("#bread1").text("My profile")
         $("#lang").text("rs");
         treningToUse = imenaTreningaEnglish;
         nemaZakazanih = "You don't have any training scheduled";

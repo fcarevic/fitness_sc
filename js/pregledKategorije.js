@@ -360,8 +360,17 @@ baza_en.set(cardio_en.kruzni.naslov, cardio_en.kruzni);
 baza_en.set(cardio_en.trcanje.naslov, cardio_en.trcanje);
 var baza = null;
 
+let jezik_srp= 'rs';
+let jezik_eng= 'eng';
+let jezik=[];
+
+
+
 function languageSwitch() {
-    if (localStorage.getItem("lang") == 'en') baza = baza_en;
+    jezik=jezik_srp;
+    if (localStorage.getItem("lang") == 'en') {baza = baza_en;
+        jezik=jezik_eng;
+    }
     else baza = baza_sr;
     let el = baza.get(sessionStorage.getItem("kategorija"));
     $("#naslov").text(el.naslov);
@@ -420,11 +429,62 @@ function languageSwitch() {
     $("#komentariTekst").text(komentariTekst);    
     document.getElementsByTagName("textarea")[0].placeholder=txtareaplaceholder;
     $("#posalji").text(dugmePosalji);  
+
+    let broadcumb1= sessionStorage.getItem("tip");
+    let broadcumb2=sessionStorage.getItem("kategorija");
+    $("#link1").text(broadcumb1);
+    
+    $("#link2").text(broadcumb2);
+    $("#lang").text(jezik);
+
     
 
 
 }
 
+function prevediSesiju(){
+      let kategorija=null;
+      let tip = null;
+        switch(sessionStorage.getItem('kategorija')){
+            case "Running":  kategorija = "Trčanje"; break; 
+            case "Kružni trening": kategorija = "Circular training"; break; 
+            case "Trčanje":  kategorija = "Running"; break; 
+            case "Circular training": kategorija = "Kružni trening"; break; 
+            case "Cardio box": kategorija = "Kardio boks"; break; 
+            case "Kardio boks": kategorija = "Cardio box"; break; 
+
+            case "Klasični pilates": kategorija = "Classic pilates"; break; 
+            case "Classic pilates": kategorija = "Klasični pilates"; break;
+
+            case "Radža joga": kategorija = "Raja yoga"; break;
+            case "Raja yoga": kategorija = "Radža joga"; break;
+            case "Kharma yoga": kategorija = "Karma joga"; break;
+            case "Karma joga": kategorija = "Kharma yoga"; break;
+            case "Hatha yoga": kategorija = "Hata joga"; break;
+            case "Hata joga": kategorija = "Hatha yoga"; break;
+
+            case "Klasični trening":  kategorija = "Classic training"; break;
+            case "Classic training":  kategorija = "Klasični trening"; break;
+            case "Abdominal training":  kategorija = "Abdomenalni trening"; break;
+            case "Abdomenalni trening":  kategorija = "Abdominal training"; break;
+
+        }
+
+        switch(sessionStorage.getItem('tip')){
+            case 'Joga' : tip = 'Yoga'; break;
+            case 'Yoga' : tip = 'Joga'; break;
+            case 'Cardio': tip = 'Kardio'; break;
+            case 'Kardio': tip= 'Cardio'; break;
+
+        }
+        if(tip!=null)
+        sessionStorage.setItem('tip',tip );
+        if(kategorija!=null)
+        sessionStorage.setItem('kategorija', kategorija);
+
+
+
+}
 
 
 
@@ -433,6 +493,17 @@ $(document).ready(function () {
     languageSwitch();
 
     $(".okvir").css({ "display": "initial" });
+
+    $("#lang").click(function(){
+        if(localStorage.getItem('lang')=='en')
+        localStorage.setItem('lang', 'rs');
+        else localStorage.setItem('lang','en');
+        prevediSesiju();
+        languageSwitch();
+    })
+    $("#link1").click(function(){
+        loadPage('prikazTipa');
+    });
 
 }
 );

@@ -206,6 +206,9 @@ var baza;
 let srpski_kontakt = ['Kontaktirajte nas', 'Za više informacija o pozovite broj ili pošaljite e-mail.'];
 let englski_kontakt = ['Contact us', 'For more info call or e-mail us'];
 
+let jezik_srp= 'rs';
+let jezik_eng= 'eng';
+let jezik=[];
 
 function languageSwitch() {
     switch (sessionStorage.getItem("tip")) {
@@ -243,13 +246,14 @@ function languageSwitch() {
     let sorttext = 'Sortiraj po :'
     let dugmeVise = "Više...";
 
-
+    jezik=jezik_srp;
     if (localStorage.getItem('lang') == 'en') {
         trtext = "Duration :"
         teztext = "Level :"
         kontakt = englski_kontakt;
         sorttext = "Sort by";
         dugmeVise='More...';
+        jezik=jezik_eng;
     }
 
     $(".trajanjeTekst").text(trtext);
@@ -263,6 +267,10 @@ function languageSwitch() {
     document.getElementById('0').value=dugmeVise;
     document.getElementById('1').value=dugmeVise;
     document.getElementById('2').value=dugmeVise;
+   
+    let broadcumb1= sessionStorage.getItem("tip");
+    $("#link1").text(broadcumb1);
+    $("#lang").text(jezik);
 }
 
 
@@ -293,6 +301,14 @@ $(document).ready(function () {
 
     $(".okvir").css({ "display": "initial" });
 
+    $("#lang").click(function(){
+        if(localStorage.getItem('lang')=='en')
+        localStorage.setItem('lang', 'rs');
+        else localStorage.setItem('lang','en');
+        prevediSesiju();
+        languageSwitch();
+        update();
+    })
 
 
 
@@ -335,4 +351,21 @@ function update() {
     }
 
 
+}
+
+function prevediSesiju(){
+    
+    let tip = null;
+     
+
+      switch(sessionStorage.getItem('tip')){
+          case 'Joga' : tip = 'Yoga'; break;
+          case 'Yoga' : tip = 'Joga'; break;
+          case 'Cardio': tip = 'Kardio'; break;
+          case 'Kardio': tip= 'Cardio'; break;
+
+      }
+      if(tip!=null)
+      sessionStorage.setItem('tip',tip );
+     
 }
