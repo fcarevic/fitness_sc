@@ -177,7 +177,7 @@ $("#lang").click(function(){
 
      $("#zakazaniTreninziTabelaTelo").empty();
     
-     if(sessionStorage.getItem("rezervisaniTreninzi") == null || JSON.parse(sessionStorage.getItem("rezervisaniTreninzi")).length == 0){
+     if(localStorage.getItem("rezervisaniTreninzi") == null || JSON.parse(localStorage.getItem("rezervisaniTreninzi")).length == 0){
         $("#zakazaniTreninziTabelaTelo").append(
           startRow + "<td colspan =" + "4" + ">" + nemaZakazanih + endCol + endRow  
         )
@@ -192,7 +192,7 @@ $("#lang").click(function(){
     
 })
 
-    if(sessionStorage.getItem("rezervisaniTreninzi") == null || JSON.parse(sessionStorage.getItem("rezervisaniTreninzi")).length == 0){
+    if(localStorage.getItem("rezervisaniTreninzi") == null || JSON.parse(localStorage.getItem("rezervisaniTreninzi")).length == 0){
         $("#zakazaniTreninziTabelaTelo").append(
           startRow + "<td colspan =" + "4" + ">" + nemaZakazanih + endCol + endRow  
         )
@@ -202,7 +202,7 @@ $("#lang").click(function(){
     }
 
     function prikaziTreninge(){
-        var zakazani = JSON.parse(sessionStorage.getItem("rezervisaniTreninzi"));
+        var zakazani = JSON.parse(localStorage.getItem("rezervisaniTreninzi"));
                 
         var buttonStart = '<input type="button" class="btn btn-danger otkazi" value=' +  buttonOtkazi;
         var buttonEndDisabled = " disabled>";
@@ -269,7 +269,7 @@ $("#lang").click(function(){
      
      
      
-            var zakazani = JSON.parse(sessionStorage.getItem("rezervisaniTreninzi"));
+            var zakazani = JSON.parse(localStorage.getItem("rezervisaniTreninzi"));
      
             var begining = getTerminDateBegining(termin, danToBroj[terminToSerbian[dan]]);
             var end = getTerminDateEnd(termin, danToBroj[terminToSerbian[dan]]);
@@ -288,7 +288,7 @@ $("#lang").click(function(){
              });
      
              $(this).parent().parent().remove();
-             sessionStorage.setItem("rezervisaniTreninzi",JSON.stringify(zakazani));
+             localStorage.setItem("rezervisaniTreninzi",JSON.stringify(zakazani));
              var treninzi = JSON.parse(localStorage.getItem("treninziRaspored"));
            
      

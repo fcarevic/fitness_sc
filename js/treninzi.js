@@ -391,10 +391,10 @@ $("#lang").click(function(){
             termin = trening["termini"][i];
             var begining = getTerminDateBegining(termin,j);
             var end = getTerminDateEnd(termin, j);
-            if(sessionStorage.getItem("rezervisaniTreninzi") == null){
+            if(localStorage.getItem("rezervisaniTreninzi") == null){
                 rezervisaniTreninzi = [];
             } else {
-                rezervisaniTreninzi = JSON.parse(sessionStorage.getItem("rezervisaniTreninzi"));
+                rezervisaniTreninzi = JSON.parse(localStorage.getItem("rezervisaniTreninzi"));
             }
     
              if ( rezervisaniTreninzi != [] && rezervisaniTreninzi.find(function(jedanTrening){
@@ -436,10 +436,10 @@ $("#lang").click(function(){
         var trening = treninzi[parameter];
 
 
-        if(sessionStorage.getItem("rezervisaniTreninzi") == null){
+        if(localStorage.getItem("rezervisaniTreninzi") == null){
             rezervisaniTreninzi = [];
         } else {
-            rezervisaniTreninzi = JSON.parse(sessionStorage.getItem("rezervisaniTreninzi"));
+            rezervisaniTreninzi = JSON.parse(localStorage.getItem("rezervisaniTreninzi"));
         }
 
      var begining = getTerminDateBegining(trening["termini"][row], col);
@@ -477,7 +477,7 @@ $("#lang").click(function(){
                 "defaultIme":parameter
         })
         console.log(rezervisaniTreninzi);
-        sessionStorage.setItem("rezervisaniTreninzi", JSON.stringify(rezervisaniTreninzi));
+        localStorage.setItem("rezervisaniTreninzi", JSON.stringify(rezervisaniTreninzi));
        
     })
 
