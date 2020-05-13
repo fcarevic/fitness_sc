@@ -1,5 +1,8 @@
 var baza_sr = new Map();
 var baza_en = new Map();
+let ocena=0;
+var mapaKomentara= [];
+
 let yoga = {
 
     "karma": {
@@ -387,9 +390,22 @@ function languageSwitch() {
     for (let i = 0; i < video.length; i++) {
         video[i].src = el.video[(i + 1) % video.length];
     }
+    let nova_ocena= el.ocena;
+    let obj=null;
+    if(mapaKomentara.length!=0)
+    for(let i = 0 ; i < mapaKomentara.length; i++){
+    if(mapaKomentara[i].kategorija==sessionStorage.getItem("kategorija")){
+     obj=mapaKomentara[i]; 
+        }
+    }
+     if(obj!=null) {
+      nova_ocena= Math.floor(((nova_ocena*2 + obj.ocena))/3);
+     }
 
 
-    for (let i = 0; i < el.ocena; i++) {
+
+
+    for (let i = 0; i < nova_ocena; i++) {
         $("#star" + i).removeClass("grey");
         $("#star" + i).css({ "color": "gold" });
 
@@ -437,6 +453,13 @@ function languageSwitch() {
     $("#link2").text(broadcumb2);
     $("#lang").text(jezik);
 
+    let komentari = document.getElementsByClassName("be-comment-time");
+    let zvezde1 = komentari[0].getElementsByClassName("fa-star");
+    let zvezde2 = komentari[1].getElementsByClassName("fa-star");
+    for(let i = 0 ; i< el.ocena;i++){
+        zvezde1[i].setAttribute("class", "fa fa-star gold");
+        zvezde2[i].setAttribute("class","fa fa-star gold");
+    }
     
 
 
@@ -490,7 +513,11 @@ function prevediSesiju(){
 
 
 $(document).ready(function () {
+    if(localStorage.getItem("komentari") != null)
+  mapaKomentara = JSON.parse(localStorage.getItem("komentari"));
+
     languageSwitch();
+    updateMojKomentar();
 
     $(".okvir").css({ "display": "initial" });
 
@@ -504,6 +531,107 @@ $(document).ready(function () {
     $("#link1").click(function(){
         loadPage('prikazTipa');
     });
+    $("#dugme").click(function(){
+        ostaviKomentar();
+    });
+    $(" #1, #2, #3, #4 ,#5").click(function(){
+        alert('suo');
+        ocena= parseInt(this.id);
+        alert(ocena);
+        let zvezde= document.getElementsByClassName("mojaocena");
+        for(let i = 0 ;i < zvezde.length;i++ ){
+        if(ocena>i)
+          
+        $("#" +(i+1) ).addClass("gold");
+        else $("#" +(i+1) ).removeClass("gold");
+        }
+    })
 
 }
 );
+
+
+function ostaviKomentar(){
+    let vreme= new Date();
+   /* let sviZakazi = localStorage.getItem("zakazanitreninzi");
+    if(sviZakazi==null) return;
+    let flag= false;
+    for(let i= 0 ;i<sviZakazi.length;i++){
+      if( sessionStorage.getItem("kategorija") == uskladiNaziv(sviZakazi[i].ime))
+                  if( sviZakazi[i].kraj > vreme.getTime()) return;
+                  else flag=true;
+
+    }
+    if(!flag) return;*/
+    let komentar=  $("#komentar").val();
+    if( komentar=="") {
+        $("#komentar").css({
+            "border-color" : "red"
+        });
+        return ;
+    }       
+   
+     let vremeTekst = vreme.toLocaleDateString();
+    let obj = {
+        "kategorija" : sessionStorage.getItem("kategorija"),
+        "tekst": komentar,
+        "ocena": ocena,
+        "vreme":vremeTekst
+    };
+     mapaKomentara.push (obj);
+     prevediSesiju();
+     let obj2 = {
+        "kategorija" : sessionStorage.getItem("kategorija"),
+        "tekst": komentar,
+        "ocena": ocena,
+        "vreme":vremeTekst
+    };
+     mapaKomentara.push(obj2);
+     prevediSesiju();
+    
+     localStorage.setItem("komentari", JSON.stringify(mapaKomentara));
+      
+    updateMojKomentar();
+     
+
+    
+
+}
+
+function uskladiNaziv(ime ){
+       switch(ime){
+
+       }
+
+
+}
+
+
+function updateMojKomentar(){
+   /// return;
+   $("#brojKomentara").text('2');
+   let obj=null;
+   if(mapaKomentara.length==0)return;
+   for(let i = 0 ; i < mapaKomentara.length; i++){
+   if(mapaKomentara[i].kategorija==sessionStorage.getItem("kategorija")){
+    obj=mapaKomentara[i]; 
+   }
+   }
+    if(obj==null) return;
+    $("#mojKomentarTekst").text(obj.tekst);
+    $("#mojKomentarVreme").text(obj.vreme);
+
+    let zvezde= document.getElementsByClassName("be-comment-time")[2].getElementsByClassName("fa-star");
+    for (let i =0 ; i< obj.ocena;i++) zvezde[i].setAttribute("class", "fa fa-star gold");
+    $("#brojKomentara").text('3');
+    let el = baza.get(sessionStorage.getItem("kategorija"));
+    let nova_ocena = Math.floor((el.ocena *2 + obj.ocena)/3);
+    for (let i = 0; i < nova_ocena; i++) {
+        $("#star" + i).removeClass("grey");
+        $("#star" + i).css({ "color": "gold" });
+
+    }
+     
+    document.getElementById("mojKomentar").style.visibility="visible";
+
+}
