@@ -50,16 +50,16 @@ var terminToSerbian = {
 
 
 imenaTreningaSerbian = {
-    "Karma Yoga": "Karma Yoga",
-    "Radža Yoga": "Raja Yoga",
-    "Hata Yoga" : "Hata Yoga",
+    "Karma Yoga": "Karma Joga",
+    "Radža Yoga": "Radža Joga",
+    "Hata Yoga" : "Hata Joga",
     "Klasični pilates" : "Klasični pilates",
     "Reformer pilates" :"Reformer pilates",
     "Stott pilates":"Stott pilates",
     "Crossfit" :"Crossfit",
-    "Abdomenalni trening":"Abdomenal trening",
+    "Abdomenalni trening":"Abdomenalni trening",
     "Klasični trening" : "Klasični trening",
-    "Kardio Box":"Kardio Box",
+    "Kardio Box":"Kardio Boks",
     "Trčanje": "Trčanje",
     "Kružni trening" : "Kružni trening",
 
@@ -67,25 +67,25 @@ imenaTreningaSerbian = {
 
 
 imenaTreningaEnglish = {
-    "Karma Yoga": "Karma Yoga",
-    "Radža Yoga": "Radza Yoga",
-    "Hata Yoga" : "Hata Yoga",
+    "Karma Yoga": "Kharma Yoga",
+    "Radža Yoga": "Raja Yoga",
+    "Hata Yoga" : "Hatha Yoga",
     "Klasični pilates" : "Classical pilates",
     "Reformer pilates" :"Reformer pilates",
     "Stott pilates":"Stott pilates",
     "Crossfit" :"Crossfit",
-    "Abdomenalni trening":"Abdominal trening",
-    "Klasični trening" : "Classical trening",
+    "Abdomenalni trening":"Abdominal training",
+    "Klasični trening" : "Classical training",
     "Kardio Box":"Cardio Box",
     "Trčanje": "Running",
-    "Kružni trening" : "Circular trening",
+    "Kružni trening" : "Circular training",
 
 }
 
 imenaTreninga = {
-    "Karma Yoga": "Karma Yoga",
-    "Radža Yoga": "Radža Yoga",
-    "Hata Yoga" : "Hata Yoga",
+    "Karma Joga": "Karma Yoga",
+    "Radža Joga": "Radža Yoga",
+    "Hata Joga" : "Hata Yoga",
     "Klasični pilates" : "Klasični pilates",
     "Reformer pilates" :"Reformer pilates",
     "Stott pilates":"Stott pilates",
@@ -95,18 +95,18 @@ imenaTreninga = {
     "Kardio Box":"Kardio Box",
     "Trčanje": "Trčanje",
     "Kružni trening" : "Kružni trening",
-    "Karma Yoga" : "Karma Yoga" ,
+    "Kharma Yoga" : "Karma Yoga" ,
     "Raja Yoga" : "Radža Yoga",
-    "Hata Yoga" : "Hata Yoga",
+    "Hatha Yoga" : "Hata Yoga",
     "Classical pilates" :"Klasični pilates",
     "Reformer pilates" :"Reformer pilates",
     "Stott pilates" :"Stott pilates",
     "Crossfit" :"Crossfit",
-    "Abodminal trening":"Abdomenalni trening",
-    "Classical trenning" :"Klasični trening",
+    "Abodminal training":"Abdomenalni trening",
+    "Classical training" :"Klasični trening",
     "Cardio Box" : "Kardio Box",
     "Running":"Trčanje",
-    "Circular trening":"Kružni trening"
+    "Circular training":"Kružni trening"
 
 }
 

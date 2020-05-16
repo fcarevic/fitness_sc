@@ -87,15 +87,15 @@ $(document).ready(function () {
 
 
     imenaTreningaSerbian = {
-        "yoga1":   "Karma Yoga",
-        "yoga2": "Radza Yoga",
-        "yoga3": "Hata Yoga",
+        "yoga1":   "Karma Joga",
+        "yoga2": "Radza Joga",
+        "yoga3": "Hata Joga",
         "pilates1": "Klasični pilates",
         "pilates2": "Reformer pilates",
         "pilates3":"Stott pilates",
         "core1": "Crossfit",
         "core2": "Abdomenalni trening",
-        "core3": "Klasicni trening",
+        "core3": "Klasični trening",
         "cardio1":"Kardio Box",
         "cardio2": "Trčanje",
         "cardio3" : "Kružni trening"
@@ -103,18 +103,18 @@ $(document).ready(function () {
     }
      
     imenaTreningaEnglish = {
-        "yoga1":"Karma Yoga"  ,
+        "yoga1":"Kharma Yoga"  ,
         "yoga2": "Raja Yoga",
-        "yoga3":"Hata Yoga",
+        "yoga3":"Hatha Yoga",
         "pilates1":"Classical pilates",
         "pilates2":"Reformer pilates",
         "pilates3":"Stott pilates",
         "core1":"Crossfit",
-        "core2":"Abodminal trening",
-        "core3":"Classical trenning",
+        "core2":"Abodminal training",
+        "core3":"Classical training",
         "cardio1":"Cardio Box",
         "cardio2":"Running",
-        "cardio3": "Circular trenning"
+        "cardio3": "Circular training"
 
     }
      
