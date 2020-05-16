@@ -204,7 +204,7 @@ imenaTreningaEnglish = {
   
         daniZaTabelu = danUNedeljiSrpski;
         zakazanTrening = "   Rezervisan  ";
-        prosaoTrening = "     Prosao    ";
+        prosaoTrening = "      Prosao     ";
         breadpart1 = "Rezervisanje treninga";
         dostupanTrening = "Dostupno";
         imenaToUSe = imenaTreningaSerbian;
@@ -296,7 +296,7 @@ $("#lang").click(function(){
                     $("#" + i + "" + j).attr("value",  "   Rezervisan  ");
                 } else {
                     if(vrednost==prosaoTrening) {
-                        $("#" + i + "" + j).attr("value", "     Prosao    ");
+                        $("#" + i + "" + j).attr("value", "      Prosao     ");
                     } else {
                             var regex = /^.*Available (..|.)$/;
                             var text =  $("#" + i + "" + j).attr("value");
@@ -314,7 +314,7 @@ $("#lang").click(function(){
         canceled = "Otkazan"
         daniZaTabelu = danUNedeljiSrpski;
         zakazanTrening = "   Rezervisan  ";
-        prosaoTrening = "     Prosao    ";
+        prosaoTrening = "      Prosao     ";
         breadpart1 = "Rezervisanje treninga";
         dostupanTrening = "Dostupno";
         $("#lang").text("en");
