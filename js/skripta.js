@@ -117,8 +117,8 @@ let englski_kontakt=[ 'Contact us', 'For more info call or e-mail us'];
 let broadcumb_srpski ="Početna";
 let broadcumb_en ="Home";
 let broadcumb= [];
-let jezik_srp= 'rs';
-let jezik_eng= 'eng';
+let jezik_srp= 'en';
+let jezik_eng= 'rs';
 let jezik=[];
 function languageChange(){
     let carousel = srpski_carousel;

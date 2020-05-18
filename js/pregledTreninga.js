@@ -206,8 +206,8 @@ var baza;
 let srpski_kontakt = ['Kontaktirajte nas', 'Za više informacija o pozovite broj ili pošaljite e-mail.'];
 let englski_kontakt = ['Contact us', 'For more info call or e-mail us'];
 
-let jezik_srp= 'rs';
-let jezik_eng= 'eng';
+let jezik_srp= 'en';
+let jezik_eng= 'rs';
 let jezik=[];
 
 function languageSwitch() {
@@ -299,7 +299,7 @@ $(document).ready(function () {
     languageSwitch();
     update();
 
-    $(".okvir").css({ "display": "initial" });
+   
 
     $("#lang").click(function(){
         if(localStorage.getItem('lang')=='en')
@@ -309,6 +309,8 @@ $(document).ready(function () {
         languageSwitch();
         update();
     })
+
+    $(".okvir").css({ "display": "initial" });
 
 
 
@@ -341,10 +343,15 @@ function update() {
         slike[i].src = baza[i].slika;
 
 
-        for (let j = 0; j < baza[i].tezina; j++) {
+        for (let j = 0; j < 5; j++) {
+            if(j<baza[i].tezina){
 
             $("#trophy" + (i * 5 + j)).removeClass("grey");
             $("#trophy" + (i * 5 + j)).css({ "color": "gold" });
+            } else {
+                $("#trophy" + (i * 5 + j)).addClass("grey");
+
+            }
 
         }
         trajanja[i].innerHTML = " " + baza[i].trajanje + "<sup>min<sup>";

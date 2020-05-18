@@ -363,8 +363,8 @@ baza_en.set(cardio_en.kruzni.naslov, cardio_en.kruzni);
 baza_en.set(cardio_en.trcanje.naslov, cardio_en.trcanje);
 var baza = null;
 
-let jezik_srp= 'rs';
-let jezik_eng= 'eng';
+let jezik_srp= 'en';
+let jezik_eng= 'rs';
 let jezik=[];
 
 
@@ -519,7 +519,7 @@ $(document).ready(function () {
     languageSwitch();
     updateMojKomentar();
 
-    $(".okvir").css({ "display": "initial" });
+   
 
     $("#lang").click(function(){
         if(localStorage.getItem('lang')=='en')
@@ -534,18 +534,13 @@ $(document).ready(function () {
     $("#dugme").click(function(){
         ostaviKomentar();
     });
-    $(" #1, #2, #3, #4 ,#5").click(function(){
-        alert('suo');
-        ocena= parseInt(this.id);
-        alert(ocena);
-        let zvezde= document.getElementsByClassName("mojaocena");
-        for(let i = 0 ;i < zvezde.length;i++ ){
-        if(ocena>i)
-          
-        $("#" +(i+1) ).addClass("gold");
-        else $("#" +(i+1) ).removeClass("gold");
-        }
-    })
+    $("#1").click({id:"1"}, colorStars);
+    $("#2").click({id:"2"},colorStars);
+    $("#3").click({id:"3"},colorStars);
+    $("#4").click({id:"4"},colorStars);
+    $("#5").click({id:"5"},colorStars);
+    $(".okvir").css({ "display": "initial" });
+    
 
 }
 );
@@ -553,16 +548,16 @@ $(document).ready(function () {
 
 function ostaviKomentar(){
     let vreme= new Date();
-   /* let sviZakazi = localStorage.getItem("zakazanitreninzi");
-    if(sviZakazi==null) return;
+    let sviZakazi = localStorage.getItem("zakazanitreninzi");
+    if(sviZakazi==null)  {alert('Niste prisustvovali treningu!') ;return;};
     let flag= false;
     for(let i= 0 ;i<sviZakazi.length;i++){
-      if( sessionStorage.getItem("kategorija") == uskladiNaziv(sviZakazi[i].ime))
+      if( sessionStorage.getItem("kategorija") == sviZakazi[i].ime)
                   if( sviZakazi[i].kraj > vreme.getTime()) return;
                   else flag=true;
 
     }
-    if(!flag) return;*/
+    if(!flag) {alert('Niste prisustvovali treningu!') ;return;};
     let komentar=  $("#komentar").val();
     if( komentar=="") {
         $("#komentar").css({
@@ -597,14 +592,25 @@ function ostaviKomentar(){
     
 
 }
-
-function uskladiNaziv(ime ){
-       switch(ime){
-
-       }
-
+function colorStars(element){
+    
+    
+    
+    ocena= parseInt(element.data.id);
+        
+        
+    for(let i = 0 ;i < 5;i++ ){
+    if(ocena>i){
+     document.getElementById(i+1).style.color="gold";
+    }
+    else{  
+        document.getElementById(i+1).style.color="grey";
+        }
+    }
 
 }
+
+
 
 
 function updateMojKomentar(){

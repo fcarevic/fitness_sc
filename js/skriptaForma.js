@@ -5,6 +5,14 @@
     */
    $(document).ready(function(){
     LanguageSwitch();
+    $("#lang").click(function(){
+      if(localStorage.getItem('lang')=='en')
+      localStorage.setItem('lang', 'rs');
+      else localStorage.setItem('lang','en');
+     
+      LanguageSwitch();
+      
+  })
     $("#pdf").click(function(){
        
       $("#name").css({"border-color" : "gray"});
@@ -117,15 +125,19 @@ let textarea_placeholder_srb="Kratak opis problema";
 let dugmetekst_SRB= 'POŠALJI ';
 let dugmetekst_ENG= 'SEND ';
 let slike_tekst_masaze_srp= ['Masaža leđa', 'Masaža nogu', 'Šijacu masaža'];
-let slike_tekst_masaze_eng=[ 'Back masage', 'Leg massage', 'Shiatzu massage'];
+let slike_tekst_masaze_eng=[ 'Back massage', 'Leg massage', 'Shiatzu massage'];
 let slike_tekst_nutr_srp= ['Ivana', 'Ishrana', 'Maja'];
 let slike_tekst_nutr_eng=[ 'Ivana', 'Diet', 'Maja'];
 let opisFormaNutricionista_srp='Zakažite pregled kod nutricioniste!';
 let opisFormaNutricionista_eng='Schedule an appointment with our nutritionist!';
 let opisFormaMasaza_srp='Zakažite masažu!';
 let opisFormaMasaza_eng='Schedule massage!';
+let broadc_nutr_srp = 'Nutricionista';
+let broadc_nutr_eng = 'Nutritionist';
+let broadc_mas_srp = 'Masaže';
+let broadc_mas_eng = 'Massages';
 
-
+let broadc=[];
 
 let adresa_srb= `<br/>Ulica 3
 <br/>34117 Palilula
@@ -147,27 +159,34 @@ let moreinfo= "Više informacija";
 let slike_tekst=[];
 let opis_forma=[];
 
-
+let jezik_srp= 'en';
+let jezik_eng= 'rs';
+let jezik=jezik_srp;
 
 
 function LanguageSwitch(){
   if(window.location.href.indexOf('masaza')!=-1){
     opis= maser_opis_srpski;
     opis_forma=opisFormaMasaza_srp;
-    slike_tekst=slike_tekst_masaze_srp
+    slike_tekst=slike_tekst_masaze_srp;
+    broadc=broadc_mas_srp;
     
   }else {opis=nutricionista_opis_srpski;
   opis_forma=opisFormaNutricionista_srp;
+  broadc=broadc_nutr_srp;
     slike_tekst=slike_tekst_nutr_srp;
 }
 
   if(localStorage.getItem("lang") =='en'){
+    jezik=jezik_eng;
     if(window.location.href.indexOf('masaza')!=-1){
       opis= maser_opis_engleski;
       opis_forma=opisFormaMasaza_eng;
       slike_tekst=slike_tekst_masaze_eng;
+      broadc=broadc_mas_eng;
       
     }else{
+      broadc=broadc_nutr_eng;
       slike_tekst=slike_tekst_nutr_eng;
       opis_forma=opisFormaNutricionista_eng;
     opis=nutricionista_opis_engleski;}
@@ -199,6 +218,8 @@ function LanguageSwitch(){
     slikaTekst[i].textContent=slike_tekst[i];
   }
   document.getElementById("opisForma").textContent=opis_forma;
+  document.getElementById("lang").textContent=jezik;
+  document.getElementById("link2").textContent=broadc;
 
 
 
