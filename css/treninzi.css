@@ -5,8 +5,8 @@
 
 
 .prosiri{
-   
 }
+
 
 a, a:hover, a:focus {
     color: inherit;
@@ -15,7 +15,7 @@ a, a:hover, a:focus {
 }
 
 
-@media (max-width: 480px) { 
+@media (max-width: 500px) { 
 
     .prosiri{
         min-width: 100%;
@@ -24,7 +24,9 @@ a, a:hover, a:focus {
         padding-right: 0px;
         margin-left: 0px;
         margin-right: 0px;
+        
 
     }
+
 
  }

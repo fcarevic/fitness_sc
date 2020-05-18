@@ -233,6 +233,7 @@ $("#lang").click(function(){
        if (date.getTime()>=begining){
          buttonEnd = buttonEndDisabled;
        }
+       if(date.getTime() < end){
     
         $("#zakazaniTreninziTabelaTelo").append(
             startRow 
@@ -243,7 +244,7 @@ $("#lang").click(function(){
             + endRow  
         )
     
-    
+        }
     
     
     

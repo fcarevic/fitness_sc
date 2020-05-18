@@ -176,9 +176,6 @@ imenaTreningaEnglish = {
        localStorage.setItem("treninziRaspored", JSON.stringify(treninzi));
    }
 
-   
-
-
    treninzi = JSON.parse(localStorage.getItem("treninziRaspored"));
 
    treninziBase = ["pilates", "yoga", "core", "cardio"]
@@ -218,7 +215,7 @@ imenaTreningaEnglish = {
 
             daniZaTabelu = danUNedeljiEngleski;
             zakazanTrening = "    Reserved   ";
-            prosaoTrening = "     Finished    ";
+            prosaoTrening = "    Finished   ";
             breadpart1 = "Training reservation";
             var dostupanTrening = "Available";
             imenaToUSe = imenaTreningaEnglish;
@@ -248,19 +245,20 @@ $("#lang").click(function(){
                         $("#" + i + "" + j).attr("disabled","disabled");  
                         continue;
                     }
-                
                     if(vrednost == zakazanTrening) {
                         $("#" + i + "" + j).attr("value",  "    Reserved   ");
                     } else {
                         if(vrednost==prosaoTrening) {
-                            $("#" + i + "" + j).attr("value","     Finished    ");
+                            $("#" + i + "" + j).attr("value","    Finished   ");
                         } else {
-                                var regex = /^.*Dostupno (..|.)$/;
+                                var regex = /^.*Dostupno *([0-9]+) *$/;
                                 var text =  $("#" + i + "" + j).attr("value");
-                                console.log(text);
-                                var number = parseInt(text.match(regex)[1]);
+                                var numberText = text.match(regex)[1];
+                                var number = parseInt(numberText);
+                                var extraSpace = "";
+                                if (numberText.length == 1) {extraSpace = " "}
                                 dostupanTrening = "Available";
-                                $("#" + i + "" + j).attr("value", dostupanTrening + " " + number);
+                                $("#" + i + "" + j).attr("value", dostupanTrening + " " + extraSpace + number + extraSpace);
                         }
                     }
         
@@ -270,20 +268,17 @@ $("#lang").click(function(){
         canceled = "Canceled"
         daniZaTabelu = danUNedeljiEngleski;
         zakazanTrening = "    Reserved   ";
-        prosaoTrening = "     Finished    ";
+        prosaoTrening = "    Finished   ";
         breadpart1 = "Training reservation";
         dostupanTrening = "Available";
         $("#lang").text("rs");
         localStorage.setItem("lang", "en");
-        imateZakazaniUDatomTerminu = "You have training in that";
+        imateZakazaniUDatomTerminu = "You have training in this termin";
     }  else {
         imenaToUSe = imenaTreningaSerbian;
         canceled ="Canceled";
         for ( let i = 0; i < 2; i++ ){
             for(let j = 1; j <= 7;j ++){
-
-                
-    
                 var vrednost = $("#" + i + "" + j).attr("value");
 
                 
@@ -298,19 +293,19 @@ $("#lang").click(function(){
                     if(vrednost==prosaoTrening) {
                         $("#" + i + "" + j).attr("value", "      Prosao     ");
                     } else {
-                            var regex = /^.*Available (..|.)$/;
+                            var regex = /^.*Available *([0-9]+) *$/;
                             var text =  $("#" + i + "" + j).attr("value");
-                            console.log(text);
-                            var number = parseInt(text.match(regex)[1]);
+                            var numberText = text.match(regex)[1];
+                            var number = parseInt(numberText);
+                            var extraSpace = "";
+                            if(numberText.length == 1){ extraSpace = " "}
                             dostupanTrening = "Dostupno";
-                            $("#" + i + "" + j).attr("value", dostupanTrening + " " + number);
+                            $("#" + i + "" + j).attr("value", dostupanTrening + " "  + extraSpace + number + extraSpace);
                     }
                 }
     
             }
-        }
-
-    
+        } 
         canceled = "Otkazan"
         daniZaTabelu = danUNedeljiSrpski;
         zakazanTrening = "   Rezervisan  ";
@@ -320,7 +315,6 @@ $("#lang").click(function(){
         $("#lang").text("en");
         localStorage.setItem("lang", "rs");
         imateZakazaniUDatomTerminu = "Imate zakazan trening u datom terminu";
-
     }
     
 
@@ -373,14 +367,18 @@ $("#lang").click(function(){
                 $("#" + i + "" + j).attr("disabled","disabled");  
                 continue;
             }
-
-            $("#" + i + "" + j).attr("value","  " + dostupanTrening + " " + (20 - trening[danUNedelji[j - 1]][i]));
+            var slobodno = (20 - trening[danUNedelji[j - 1]][i])+"";
+            var extraSpace = "";
+            if(slobodno.length == 1) extraSpace  = " ";
+            
+            $("#" + i + "" + j).attr("value","  " + dostupanTrening + " " + extraSpace + (20 - trening[danUNedelji[j - 1]][i]) + extraSpace);
             
             if( dostupanTrening == "Dostupno" )
-                    var regex = /^.*Dostupno (..|.)$/;
+                    var regex = /^.*Dostupno *([0-9]+) *$/;
             else 
-                var regex = /^.*Available (..|.)$/;
+                var regex = /^.*Available *([0-9]+) *$/;
             var text =  $("#" + i + "" + j).attr("value");
+            var number = parseInt(text.match(regex)[1]);
             var number = parseInt(text.match(regex)[1]);
             var number = 20 - number;
             if( number == MAXMEMBER ){
@@ -420,9 +418,9 @@ $("#lang").click(function(){
 
     $(".scheduleTrening").click(function(){
         if( dostupanTrening == "Dostupno" )
-                 var regex = /^.*Dostupno (..|.)$/;
+                 var regex = /^.*Dostupno *([0-9]+) *$/;
         else 
-                 var regex = /^.*Available (..|.)/;
+                 var regex = /^.*Available *([0-9]+) */;
         var text = $(this).attr("value");
         var number = parseInt(text.match(regex)[1]);
         var id = $(this).attr("id");
@@ -455,7 +453,8 @@ $("#lang").click(function(){
         });
 
         if(found){
-            alert(imateZakazaniUDatomTerminu);
+            $("#naslovModal").text(imateZakazaniUDatomTerminu);
+            $('#vecZakazan').modal();
             return;
         }
         
