@@ -548,12 +548,15 @@ $(document).ready(function () {
 
 function ostaviKomentar(){
     let vreme= new Date();
-    let sviZakazi = localStorage.getItem("zakazanitreninzi");
+    let sviZakazi = JSON.parse(localStorage.getItem("rezervisaniTreninzi"));
+    console.log(sviZakazi);
     if(sviZakazi==null)  {alert('Niste prisustvovali treningu!') ;return;};
+
     let flag= false;
     for(let i= 0 ;i<sviZakazi.length;i++){
+        console.log('as');
       if( sessionStorage.getItem("kategorija") == sviZakazi[i].ime)
-                  if( sviZakazi[i].kraj > vreme.getTime()) return;
+                  if( sviZakazi[i].kraj > vreme.getTime()) console.log('usao ovde') ;
                   else flag=true;
 
     }
