@@ -548,9 +548,16 @@ $(document).ready(function () {
 
 function ostaviKomentar(){
     let vreme= new Date();
-    let sviZakazi = JSON.parse(localStorage.getItem("rezervisaniTreninzi"));
+   let sviZakazi = JSON.parse(localStorage.getItem("rezervisaniTreninzi"));
     console.log(sviZakazi);
-    if(sviZakazi==null)  {alert('Niste prisustvovali treningu!') ;return;};
+    if(sviZakazi==null)  {
+        $.toast({
+          text: "Niste prisustvovali treningu",
+          icon: "warning"
+
+        });
+
+        ;return;};
 
     let flag= false;
     for(let i= 0 ;i<sviZakazi.length;i++){
@@ -560,7 +567,14 @@ function ostaviKomentar(){
                   else flag=true;
 
     }
-    if(!flag) {alert('Niste prisustvovali treningu!') ;return;};
+    if(!flag) {
+        $.toast({
+            text: "Niste prisustvovali treningu",
+            icon: "warning"
+  
+          });
+
+        return;};
     let komentar=  $("#komentar").val();
     if( komentar=="") {
         $("#komentar").css({
