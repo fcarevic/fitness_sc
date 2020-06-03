@@ -88,7 +88,7 @@ $(document).ready(function () {
 
     imenaTreningaSerbian = {
         "yoga1":   "Karma Joga",
-        "yoga2": "Radza Joga",
+        "yoga2": "Radža Joga",
         "yoga3": "Hata Joga",
         "pilates1": "Klasični pilates",
         "pilates2": "Reformer pilates",

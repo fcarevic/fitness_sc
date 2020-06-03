@@ -4,16 +4,34 @@
     * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-creative/blob/master/LICENSE)
     */
    $(document).ready(function(){
-    LanguageSwitch();
+    LanguageSwitch2();
     $("#lang").click(function(){
       if(localStorage.getItem('lang')=='en')
       localStorage.setItem('lang', 'rs');
       else localStorage.setItem('lang','en');
      
-      LanguageSwitch();
+      LanguageSwitch2();
       
   })
     $("#pdf").click(function(){
+      let srpski = {
+          "greskaTelefon": "Telefon nije unet ili je neispravan formatu",
+          "greskaIme": "Niste uneli ime",
+          "greskaPrezime": "Niste uneli prezime",
+          "greskaDatum": "Izabrani datum je prošao ili nije unet",
+          "greskaPoruka": "Niste uneli nikakvu poruku",
+          "greskaEmail": "E-mail nije unet ili je u pogrešnom formatu"
+      };
+      let engleski = {
+        "greskaTelefon": "Phone number not inserted or wrong format",
+        "greskaIme": "First name not entered",
+        "greskaPrezime": "Last name not entered",
+        "greskaDatum": "Choosen date has passed or not entered",
+        "greskaPoruka": "You have not entered any message",
+        "greskaEmail": "E-mail wrong format or not entered"
+    };
+    let baza=srpski;
+    if(localStorage.getItem('lang')=='en')baza=engleski;
        
       $("#name").css({"border-color" : "gray"});
       $("#prezime").css({"border-color" : "gray"});
@@ -21,30 +39,55 @@
       $("#message").css({"border-color" : "gray"});
       $("#email").css({"border-color" : "gray"});
       $("#telefon").css({"border-color" : "gray"});
-
+      
        let flag = true;
        let imerex= /^[a-zA-Z]+$/
             if(!(imerex.test($("#name").val())) ) {
                 $("#name").css({"border-color" : "red"});
+                $.toast({
+                  text: baza["greskaIme"],
+                  icon: "warning"
+        
+                });
                 flag=false;
             }
             if(!(imerex.test($("#prezime").val()))) {
                 $("#prezime").css({"border-color" : "red"});
-                 flag=false;}
+                $.toast({
+                  text: baza["greskaPrezime"],
+                  icon: "warning"
+        
+                }); 
+                flag=false;}
           
             //testira datum da li je prazan ili prosao
              if( $("#date").val() == "")  { 
                 $("#date").css({"border-color" : "red"}); 
+                $.toast({
+                  text: baza["greskaDatum"],
+                  icon: "warning"
+        
+                });
                 flag=false;}
              else {  let date = new Date( $("#date").val());
                   let curr = new Date();
                   if (curr.getTime()> date.getTime()) {
                     $("#date").css({"border-color" : "red"});
+                    $.toast({
+                      text: baza["greskaDatum"],
+                      icon: "warning"
+            
+                    });
                      flag=false;
                   }
             }
              if( $("#message").val() == "")  { 
                     $("#message").css({"border-color" : "red"});
+                    $.toast({
+                      text: baza["greskaPoruka"],
+                      icon: "warning"
+            
+                    });
                      flag=false;}
 
                     //provera regex za telefon mobilni +381 64 123 123 123
@@ -60,18 +103,29 @@
                 }
                if(!flagTel) {
                  $("#telefon").css({"border-color" : "red"});
+                 $.toast({
+                  text: baza["greskaTelefon"],
+                  icon: "warning"
+        
+                });
                   flag=false;
               }
               
           
-            let emailreg= /^\w+@\w+([-\.]\w+)*(\.\w{2,3})+$/
+            let emailreg= /^\w+[.\w]*@\w+([-\.]\w+)*(\.\w{2,3})+$/
             if(!emailreg.test($("#email").val())) {
-              $("#email").css({"border-color" : "red"}); flag=false;
+              $("#email").css({"border-color" : "red"}); 
+              $.toast({
+                text: baza["greskaEmail"],
+                icon: "warning"
+      
+              });
+              flag=false;
             }
             
             if(!flag) return;
             
-            let tipUsluge= Nutricionista;
+            let tipUsluge= 'Nutricionista';
             if(window.location.href.indexOf('masaza')!=-1){
               if(localStorage.getItem('lang')=='en')
               tipUsluge='Massage';
@@ -96,7 +150,7 @@
             stampa.setAttribute("class", "p-4");
             stampa.innerHTML = `<div class="text-center"> 
                 <h2 class="title-section">
-                <span class="title-regular">${zahtev}zahtev</h2> 
+                <span class="title-regular">${zahtev}</h2> 
                 </div><hr class="title-underline " /> 
                  <p> ${prava}
                   </p>`;
@@ -161,10 +215,10 @@ let opis_forma=[];
 
 let jezik_srp= 'en';
 let jezik_eng= 'rs';
-let jezik=jezik_srp;
+var jezik=jezik_srp;
 
 
-function LanguageSwitch(){
+function LanguageSwitch2(){
   if(window.location.href.indexOf('masaza')!=-1){
     opis= maser_opis_srpski;
     opis_forma=opisFormaMasaza_srp;
@@ -178,6 +232,7 @@ function LanguageSwitch(){
 }
 
   if(localStorage.getItem("lang") =='en'){
+    console.log("sadasd");
     jezik=jezik_eng;
     if(window.location.href.indexOf('masaza')!=-1){
       opis= maser_opis_engleski;
@@ -218,6 +273,7 @@ function LanguageSwitch(){
     slikaTekst[i].textContent=slike_tekst[i];
   }
   document.getElementById("opisForma").textContent=opis_forma;
+  console.log(jezik);
   document.getElementById("lang").textContent=jezik;
   document.getElementById("link2").textContent=broadc;
 

@@ -92,7 +92,7 @@ imenaTreninga = {
     "Crossfit" :"Crossfit",
     "Abdomenalni trening":"Abdomenalni trening",
     "Klasični trening" : "Klasični trening",
-    "Kardio Box":"Kardio Box",
+    "Kardio Boks":"Kardio Box",
     "Trčanje": "Trčanje",
     "Kružni trening" : "Kružni trening",
     "Kharma Yoga" : "Karma Yoga" ,

@@ -561,12 +561,15 @@ function ostaviKomentar(){
 
     let flag= false;
     for(let i= 0 ;i<sviZakazi.length;i++){
-        console.log('as');
-      if( sessionStorage.getItem("kategorija") == sviZakazi[i].ime)
+        console.log(prevediDusanovJezik());
+        
+      if( prevediDusanovJezik() == sviZakazi[i].ime)
                   if( sviZakazi[i].kraj > vreme.getTime()) console.log('usao ovde') ;
                   else flag=true;
-
+      
+           
     }
+    console.log(flag);
     if(!flag) {
         $.toast({
             text: "Niste prisustvovali treningu",
@@ -656,5 +659,40 @@ function updateMojKomentar(){
     }
      
     document.getElementById("mojKomentar").style.visibility="visible";
+
+}
+
+function prevediDusanovJezik(){
+
+
+   
+let imenaTreninga = {
+    "Karma Joga": "Karma Yoga",
+    "Radža Joga": "Radža Yoga",
+    "Hata Joga" : "Hata Yoga",
+    "Klasični pilates" : "Klasični pilates",
+    "Reformer pilates" :"Reformer pilates",
+    "Stott pilates":"Stott pilates",
+    "Crossfit" :"Crossfit",
+    "Abdomenalni trening":"Abdomenalni trening",
+    "Klasični trening" : "Klasični trening",
+    "Kardio Boks":"Kardio Box",
+    "Trčanje": "Trčanje",
+    "Kružni trening" : "Kružni trening",
+    "Kharma Yoga" : "Karma Yoga" ,
+    "Raja Yoga" : "Radža Yoga",
+    "Hatha Yoga" : "Hata Yoga",
+    "Classic pilates" :"Klasični pilates",
+    "Reformer pilates" :"Reformer pilates",
+    "Stott pilates" :"Stott pilates",
+    "Crossfit" :"Crossfit",
+    "Abodminal training":"Abdomenalni trening",
+    "Classic training" :"Klasični trening",
+    "Cardio Box" : "Kardio Box",
+    "Running":"Trčanje",
+    "Circular training":"Kružni trening"
+
+}
+ return imenaTreninga[sessionStorage.getItem('kategorija')]; 
 
 }

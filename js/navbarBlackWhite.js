@@ -4,9 +4,11 @@ function scrolled(){
         $("#mainNav").removeClass("navbar-scrolled");
         $(".dropdown-item").addClass("black");
         $(".dropdown-item").removeClass("white");
+        $("#lang").css("color:lightgrey");
     }
      else 
         {$("#mainNav").removeClass("black");
+        $("#lang").css("color:black");
         $(".dropdown-item").addClass("white");
         $(".dropdown-item").removeClass("black");
         $("#mainNav").addClass("navbar-scrolled");

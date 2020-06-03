@@ -16,7 +16,7 @@ $(document).ready(function () {
 
      "yoga2" : {
         "ime": "Radža Yoga",
-        "termini": ["21:10-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "termini": ["08-10", "10-12", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -205,7 +205,7 @@ imenaTreningaEnglish = {
         breadpart1 = "Rezervisanje treninga";
         dostupanTrening = "Dostupno";
         imenaToUSe = imenaTreningaSerbian;
-        imateZakazaniUDatomTerminu = "Imete zakazan trening u datom terminu";
+        imateZakazaniUDatomTerminu = "Imate zakazan trening u datom terminu";
         $("#lang").text("en");
         
        
