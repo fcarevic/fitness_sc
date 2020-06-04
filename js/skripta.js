@@ -5,30 +5,72 @@
 var treninzi=[];
 
 $(document).ready(function(){
+    if ($("#mainNav").offset().top > 100)
+    {
+        $(".dropdown-item").addClass("white");
+    $(".dropdown-item").removeClass(" blackNav blackPoz");
+} 
+    else {
+        $(".dropdown-item").addClass("blackNav");
+     $(".dropdown-item").removeClass("white blackPoz");
+ };
+
+
+
+    $(window).scroll(function(){
+        if ($("#mainNav").offset().top > 100)
+        {
+            $(".dropdown-item").addClass("white");
+        $(".dropdown-item").removeClass(" blackNav blackPoz");
+   } 
+        else {
+            $(".dropdown-item").addClass("blackNav");
+         $(".dropdown-item").removeClass("white blackPoz");
+     }});
+  $(window).resize(function(){
+        if(window.innerWidth>=992){
+            if ($("#mainNav").offset().top > 100)
+            {
+                $(".dropdown-item").addClass("white");
+            $(".dropdown-item").removeClass(" blackNav blackPoz");
+       } 
+            else {
+                $(".dropdown-item").addClass("blackNav");
+             $(".dropdown-item").removeClass("white blackPoz");
+      
+            }
+        }else {
+            $(".dropdown-item").addClass("white");
+            $(".dropdown-item").removeClass(" blackNav blackPoz");
+
+        }
+
+
+  })
 
         $(".dropdown-item").on({
             mouseenter: function(){
-                if ($("#mainNav").offset().top > 100)
-                 $(this).css({
-                        "color" :"white",
-                        "background-color" : "black" 
-                    });
-                else 
-                $(this).css({
-                    "background-color" : "white" ,
-                    "color" : "black"
-                });
+                if ($("#mainNav").offset().top > 100 || window.innerWidth<992 ){
+                 $(this).addClass("blackPoz");
+                 $(this).removeClass("white blackNav");
+                 }
+                  else  { 
+                    $(this).addClass("white");
+                    $(this).removeClass("blackPoz blackNav");
+               
+            
+            }
                     },
             mouseleave: function(){
-                if ($("#mainNav").offset().top > 100)
-                $(this).css({
-                    "color": "black",
-                    "background-color" : "white"
-                });
-                else  $(this).css({
-                    "color" :"lightgrey",
-                    "background-color" : "transparent" 
-                });
+                if ($("#mainNav").offset().top > 100 || window.innerWidth<992)
+                {
+                    $(this).addClass("white");
+                $(this).removeClass("blackPoz blackNav");
+           } 
+                else {
+                    $(this).addClass("blackNav");
+                 $(this).removeClass("white blackNav");
+             };
 
 
             }

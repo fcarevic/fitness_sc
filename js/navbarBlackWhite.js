@@ -4,14 +4,18 @@ function scrolled(){
         $("#mainNav").removeClass("navbar-scrolled");
         $(".dropdown-item").addClass("black");
         $(".dropdown-item").removeClass("white");
-        $("#lang").css("color:lightgrey");
+        $("#lang").addClass("langColor");
+        $("#lang").removeClass("whiteTrans");
     }
      else 
         {$("#mainNav").removeClass("black");
-        $("#lang").css("color:black");
+        $("#mainNav").addClass("navbar-scrolled");
+      
         $(".dropdown-item").addClass("white");
         $(".dropdown-item").removeClass("black");
-        $("#mainNav").addClass("navbar-scrolled");
+      
+        $("#lang").addClass("whiteTrans");
+        $("#lang").removeClass("langColor");
     }
 }
 

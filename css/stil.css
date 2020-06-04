@@ -62,3 +62,30 @@
 body{
     display: none;
 }
+
+
+.blackPoz{
+    background-color: black !important;
+    color: lightgrey !important;
+}
+
+.white{
+    background-color: white !important;
+    color: #6c757d !important;
+}
+.blackNav{
+    background-color: white !important;
+    color: #6c757d !important;
+}
+@media (min-width: 992px) {
+    .white{
+        background-color: white !important;
+        color: black !important;
+    }
+    .blackNav {
+        background-color: transparent !important;
+      color: lightgrey !important;
+    }
+  }
+
+
