@@ -86,6 +86,7 @@ $(document).ready(function () {
 
 
 
+
     imenaTreningaSerbian = {
         "yoga1":   "Karma Joga",
         "yoga2": "Radža Joga",
@@ -96,27 +97,42 @@ $(document).ready(function () {
         "core1": "Crossfit",
         "core2": "Abdomenalni trening",
         "core3": "Klasični trening",
-        "cardio1":"Kardio Box",
+        "cardio1":"Kardio Boks",
         "cardio2": "Trčanje",
         "cardio3" : "Kružni trening"
-
+    
     }
      
     imenaTreningaEnglish = {
         "yoga1":"Kharma Yoga"  ,
         "yoga2": "Raja Yoga",
         "yoga3":"Hatha Yoga",
-        "pilates1":"Classical pilates",
+        "pilates1":"Classic pilates",
         "pilates2":"Reformer pilates",
         "pilates3":"Stott pilates",
         "core1":"Crossfit",
         "core2":"Abodminal training",
-        "core3":"Classical training",
+        "core3":"Classic training",
         "cardio1":"Cardio Box",
         "cardio2":"Running",
         "cardio3": "Circular training"
-
+    
     }
+
+    tipoviSerbian  = {
+        "c": "Core",
+        "p": "Pilates",
+        "y":"Joga",
+        "cardio":"Kardio"
+    }
+
+    tipoviEnglish = {
+        "c": "Core",
+        "p": "Pilates",
+        "y":"Yoga",
+        "cardio":"Cardio"
+    }
+   
      
     if(localStorage.getItem("lang")==null){
         imenaTreninga = imenaTreningaSerbian;
@@ -125,6 +141,9 @@ $(document).ready(function () {
         tipBiranjeHeader = "Izaberite tip treninga";
         breadcrumbzak = "Zakazivanje treninga";
         textlang = "en";
+        tipovi = tipoviSerbian;
+
+
     } else {
         if(localStorage.getItem("lang")=="en"){
             imenaTreninga = imenaTreningaEnglish;
@@ -133,6 +152,7 @@ $(document).ready(function () {
             tipBiranjeHeader = "Choose training type";
             breadcrumbzak = "Training reservation";
             textlang = "rs";
+            tipovi = tipoviEnglish;
         } else {
             imenaTreninga = imenaTreningaSerbian;
             imeDugmeta = "Izaberi";
@@ -140,18 +160,22 @@ $(document).ready(function () {
             tipBiranjeHeader = "Izaberite tip treninga";
             breadcrumbzak = "Zakazivanje treninga";
             textlang = "en";
-            
+            tipovi = tipoviSerbian;
         }            
 
     }
+
+    $("#pilates").text(tipovi["p"]);
+    $("#yoga").text(tipovi["y"]);
+    $("#core").text(tipovi["c"]);
+    $("#cardio").text(tipovi["cardio"]);
 
     treninzi = ["pilates", "yoga", "core", "cardio"]
   
     for(let i = 0; i< 4; i++)
         for(let j = 1; j<=3;j++){
                         $("#" + treninzi[i] + j).text(imenaTreninga[treninzi[i]+j])
-                        console.log(treninzi[i] + j)
-                        console.log(imenaTreninga[treninzi[i]+j])
+                      
                     }
             
     $(".izaberiDugme").text(imeDugmeta);
@@ -171,6 +195,7 @@ $(document).ready(function () {
             breadcrumbzak = "Training reservation";
             $(this).text("rs");
             localStorage.setItem("lang", "en");
+            tipovi = tipoviEnglish;
         }else{
             imenaTreninga = imenaTreningaSerbian;
             imeDugmeta = "Izaberi";
@@ -179,6 +204,7 @@ $(document).ready(function () {
             breadcrumbzak = "Zakazivanje treninga";
             $(this).text("en");
             localStorage.setItem("lang", "rs");
+            tipovi = tipoviSerbian;
         }
      
         for(let i = 0; i< 4; i++)
@@ -190,6 +216,10 @@ $(document).ready(function () {
         $("#izaberiteTipTeninga").text(tipBiranjeHeader);
         $("#breadcrumbzak").text(breadcrumbzak);
 
+        $("#pilates").text(tipovi["p"]);
+        $("#yoga").text(tipovi["y"]);
+        $("#core").text(tipovi["c"]);
+        $("#cardio").text(tipovi["cardio"]);
       })
      
      

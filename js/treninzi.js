@@ -150,7 +150,7 @@ imenaTreningaSerbian = {
     "core1": "Crossfit",
     "core2": "Abdomenalni trening",
     "core3": "Klasični trening",
-    "cardio1":"Kardio Box",
+    "cardio1":"Kardio Boks",
     "cardio2": "Trčanje",
     "cardio3" : "Kružni trening"
 
@@ -160,12 +160,12 @@ imenaTreningaEnglish = {
     "yoga1":"Kharma Yoga"  ,
     "yoga2": "Raja Yoga",
     "yoga3":"Hatha Yoga",
-    "pilates1":"Classical pilates",
+    "pilates1":"Classic pilates",
     "pilates2":"Reformer pilates",
     "pilates3":"Stott pilates",
     "core1":"Crossfit",
     "core2":"Abodminal training",
-    "core3":"Classical training",
+    "core3":"Classic training",
     "cardio1":"Cardio Box",
     "cardio2":"Running",
     "cardio3": "Circular training"
@@ -440,7 +440,7 @@ $("#lang").click(function(){
             rezervisaniTreninzi = JSON.parse(localStorage.getItem("rezervisaniTreninzi"));
         }
 
-     var begining = getTerminDateBegining(trening["termini"][row], col);
+      var begining = getTerminDateBegining(trening["termini"][row], col);
       var end = getTerminDateEnd(trening["termini"][row], col);
      
         found = false;
@@ -460,7 +460,6 @@ $("#lang").click(function(){
         
 
         number++;
-        console.log(number);  
         $(this).attr("disabled","disabled");
         $(this).attr("value", zakazanTrening);
        
@@ -475,7 +474,6 @@ $("#lang").click(function(){
                 "kraj":end.getTime(), 
                 "defaultIme":parameter
         })
-        console.log(rezervisaniTreninzi);
         localStorage.setItem("rezervisaniTreninzi", JSON.stringify(rezervisaniTreninzi));
        
     })
