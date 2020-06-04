@@ -676,7 +676,7 @@ let imenaTreninga = {
     "Crossfit" :"Crossfit",
     "Abdomenalni trening":"Abdomenalni trening",
     "Klasični trening" : "Klasični trening",
-    "Kardio Boks":"Kardio Box",
+    "Kardio Boks":"Kardio Boks",
     "Trčanje": "Trčanje",
     "Kružni trening" : "Kružni trening",
     "Kharma Yoga" : "Karma Yoga" ,
@@ -688,7 +688,7 @@ let imenaTreninga = {
     "Crossfit" :"Crossfit",
     "Abodminal training":"Abdomenalni trening",
     "Classic training" :"Klasični trening",
-    "Cardio Box" : "Kardio Box",
+    "Cardio Box" : "Kardio Boks",
     "Running":"Trčanje",
     "Circular training":"Kružni trening"
 

@@ -158,7 +158,7 @@ if($(this).text()=="en"){
     kontakUS = "Kontaktirajte nas"
     callUS = "Pozovite nas"
     adresa = "Bulevar kralja Aleksandra 70, 11100 Beograd"
-    officeLocation = "Adesa"
+    officeLocation = "Adresa"
     $("#lang").text("en");
     localStorage.setItem("lang", "rs");
 
