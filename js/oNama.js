@@ -130,7 +130,7 @@ $("#office").text(officeLocation);
 $("#kontaktirajteNas").text(kontakUS);
 $("#kontaktAdress").text(kontaktAdr);
 $("#adresa").text(adresa)
-
+document.title = "Fitness/" + bread1;
 
 $("#lang").click(function(){
 
@@ -161,7 +161,6 @@ if($(this).text()=="en"){
     officeLocation = "Adresa"
     $("#lang").text("en");
     localStorage.setItem("lang", "rs");
-
 }
 
 $("#bread1").text(bread1);
@@ -172,6 +171,7 @@ $("#office").text(officeLocation);
 $("#kontaktirajteNas").text(kontakUS);
 $("#kontaktAdress").text(kontaktAdr);
 $("#adresa").text(adresa);
+document.title = "Fitness/" + bread1;
 
 for(let i = 0; i<=3; i++){
     $("#" + (2020-i)+"title").text(nagrade[(2020-i)+""]["mesto"]);

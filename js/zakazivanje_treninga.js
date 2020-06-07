@@ -183,7 +183,7 @@ $(document).ready(function () {
     $("#izaberiteTipTeninga").text(tipBiranjeHeader);
     $("#breadcrumbzak").text(breadcrumbzak);
     $("#lang").text(textlang);
-
+    document.title = "Fitness/" + breadcrumbzak;
 
 
     $("#lang").click(function () {
@@ -220,6 +220,7 @@ $(document).ready(function () {
         $("#yoga").text(tipovi["y"]);
         $("#core").text(tipovi["c"]);
         $("#cardio").text(tipovi["cardio"]);
+        document.title = "Fitness/" + breadcrumbzak;
       })
      
      

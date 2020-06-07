@@ -75,7 +75,7 @@ imenaTreningaEnglish = {
     "Stott pilates":"Stott pilates",
     "Crossfit" :"Crossfit",
     "Abdomenalni trening":"Abdominal training",
-    "Klasični trening" : "Classical training",
+    "Klasični trening" : "Classic training",
     "Kardio Boks":"Cardio Box",
     "Trčanje": "Running",
     "Kružni trening" : "Circular training",
@@ -125,11 +125,7 @@ if(localStorage.getItem("lang")==null || localStorage.getItem("lang")=="rs"){
         $("#lang").text("en");
         treningToUse = imenaTreningaSerbian;
         nemaZakazanih = "Nemate zakazazanih treninga";
-        
-       
-     
-
-
+        document.title = "Fitness/Moj profil";
 }
 else{
     header = headerEnglish;
@@ -139,7 +135,7 @@ else{
     daniToUse = treningToDanEnglish;
     treningToUse = imenaTreningaEnglish;
     nemaZakazanih = "You don't have any training scheduled";
-
+    document.title = "Fitness/My profil";
 }
 
 
@@ -161,6 +157,7 @@ $("#lang").click(function(){
     
         localStorage.setItem("lang", "en");
         daniToUse = treningToDanEnglish;
+        document.title = "Fitness/My profil";
 
     } else{
         header = headerSerbian;
@@ -171,8 +168,7 @@ $("#lang").click(function(){
         localStorage.setItem("lang", "rs");
         treningToUse = imenaTreningaSerbian;
         nemaZakazanih = "Nemate zakazazanih treninga";
-        
-       
+        document.title = "Fitness/Moj profil";   
     }
 
      $("#zakazaniTreninziTabelaTelo").empty();

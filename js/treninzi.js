@@ -95,7 +95,7 @@ $(document).ready(function () {
     },
     "core3" : {
         "ime": "Klasični trening",
-        "termini": ["21-23", "23-1", "12-14", "14-16", "16-18", "18-20", "20-22"], 
+        "termini": ["20-22", "22-24", "12-14", "14-16", "16-18", "18-20", "20-22"], 
         "ponedeljak": [0,0,0,0,0,0,0],
         "utorak":  [20,10,10,0,0,0,0],
         "sreda": [0,0,0,0,0,0,0],
@@ -229,6 +229,7 @@ imenaTreningaEnglish = {
       $("#" + i).text(daniZaTabelu[i - 2])
   }
  
+  document.title = "Fitness/" + breadpart1;
 
 $("#lang").click(function(){
 
@@ -274,6 +275,7 @@ $("#lang").click(function(){
         $("#lang").text("rs");
         localStorage.setItem("lang", "en");
         imateZakazaniUDatomTerminu = "You have training in this termin";
+        document.title = "Fitness/" + breadpart1;
     }  else {
         imenaToUSe = imenaTreningaSerbian;
         canceled ="Canceled";
@@ -315,6 +317,7 @@ $("#lang").click(function(){
         $("#lang").text("en");
         localStorage.setItem("lang", "rs");
         imateZakazaniUDatomTerminu = "Imate zakazan trening u datom terminu";
+        document.title = "Fitness/" + breadpart1;
     }
     
 
