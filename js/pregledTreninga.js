@@ -271,6 +271,7 @@ function languageSwitch() {
     let broadcumb1= sessionStorage.getItem("tip");
     $("#link1").text(broadcumb1);
     $("#lang").text(jezik);
+    document.title='Fitness/' + broadcumb1;
 }
 
 

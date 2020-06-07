@@ -276,6 +276,7 @@ function LanguageSwitch2(){
   console.log(jezik);
   document.getElementById("lang").textContent=jezik;
   document.getElementById("link2").textContent=broadc;
+  document.title='Fitness/' + broadc;
 
 
 

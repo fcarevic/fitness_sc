@@ -366,6 +366,30 @@ var baza = null;
 let jezik_srp= 'en';
 let jezik_eng= 'rs';
 let jezik=[];
+initDatabase();
+
+function initDatabase(){
+    if(localStorage.getItem('bazaEN')==null){
+        let arrayen = Array.from(baza_en, ([name, value]) => ({ name, value }));
+        let arraysr = Array.from(baza_sr, ([name, value]) => ({ name, value }));
+        localStorage.setItem('bazaEN', JSON.stringify(arrayen));
+        localStorage.setItem('bazaSR', JSON.stringify(arraysr));
+    }
+
+    let arrayen= JSON.parse(localStorage.getItem('bazaEN'));
+    let arraysr= JSON.parse(localStorage.getItem('bazaSR'));
+    baza_en = new Map();
+    baza_sr=new Map();
+    arrayen.forEach(el=>{
+        baza_en.set(el.name, el.value);
+    });
+    arraysr.forEach(el=>{
+        baza_sr.set(el.name, el.value);
+    });
+    
+
+console.log(baza_sr);
+}
 
 
 
@@ -452,15 +476,9 @@ function languageSwitch() {
     
     $("#link2").text(broadcumb2);
     $("#lang").text(jezik);
+    document.title='Fitness/' + broadcumb2;
 
-    let komentari = document.getElementsByClassName("be-comment-time");
-    let zvezde1 = komentari[0].getElementsByClassName("fa-star");
-    let zvezde2 = komentari[1].getElementsByClassName("fa-star");
-    for(let i = 0 ; i< el.ocena;i++){
-        zvezde1[i].setAttribute("class", "fa fa-star gold");
-        zvezde2[i].setAttribute("class","fa fa-star gold");
-    }
-    
+
 
 
 }
@@ -570,9 +588,11 @@ function ostaviKomentar(){
            
     }
     console.log(flag);
+    let porukagreska= "Niste prisustvovali treningu";
+        if(localStorage.getItem('lang')=='en') porukagreska = 'Did not attend this training';
     if(!flag) {
         $.toast({
-            text: "Niste prisustvovali treningu",
+            text: porukagreska,
             icon: "warning"
   
           });
@@ -593,6 +613,29 @@ function ostaviKomentar(){
         "ocena": ocena,
         "vreme":vremeTekst
     };
+    let tekst= 'Komentar vec postoji';
+    if(localStorage.getItem('lang')=='en') tekst = 'Already commented';
+    var imavec=false;
+    mapaKomentara.forEach(el=>{
+      if( el.kategorija==sessionStorage.getItem('kategorija') && !imavec)
+         {
+             
+
+            $.toast({
+                text: tekst,
+                icon: "warning"
+      
+              });
+      
+              imavec=true;
+              
+         }
+
+    });
+
+if(imavec) return;
+
+
      mapaKomentara.push (obj);
      prevediSesiju();
      let obj2 = {
@@ -635,7 +678,7 @@ function colorStars(element){
 
 function updateMojKomentar(){
    /// return;
-   $("#brojKomentara").text('2');
+   $("#brojKomentara").text('0');
    let obj=null;
    if(mapaKomentara.length==0)return;
    for(let i = 0 ; i < mapaKomentara.length; i++){
@@ -645,18 +688,39 @@ function updateMojKomentar(){
    }
     if(obj==null) return;
     $("#mojKomentarTekst").text(obj.tekst);
+    console.log('vreme ' + obj.vreme);
     $("#mojKomentarVreme").text(obj.vreme);
 
-    let zvezde= document.getElementsByClassName("be-comment-time")[2].getElementsByClassName("fa-star");
+    let zvezde= document.getElementsByClassName("be-comment-time")[0].getElementsByClassName("fa-star");
     for (let i =0 ; i< obj.ocena;i++) zvezde[i].setAttribute("class", "fa fa-star gold");
-    $("#brojKomentara").text('3');
+    $("#brojKomentara").text('1');
     let el = baza.get(sessionStorage.getItem("kategorija"));
-    let nova_ocena = Math.floor((el.ocena *2 + obj.ocena)/3);
+    let nova_ocena = Math.floor((el.ocena  + obj.ocena)/2);
     for (let i = 0; i < nova_ocena; i++) {
         $("#star" + i).removeClass("grey");
         $("#star" + i).css({ "color": "gold" });
 
     }
+    if(localStorage.getItem('lang')=='en'){
+            baza_en.get(sessionStorage.getItem("kategorija")).ocena=nova_ocena;
+            prevediSesiju(); 
+            baza_sr.get(sessionStorage.getItem("kategorija")).ocena=nova_ocena;
+            prevediSesiju();
+
+    } else {
+        prevediSesiju();
+        baza_en.get(sessionStorage.getItem("kategorija")).ocena=nova_ocena;
+        prevediSesiju(); 
+        baza_sr.get(sessionStorage.getItem("kategorija")).ocena=nova_ocena;
+        
+
+    }
+    let arrayen = Array.from(baza_en, ([name, value]) => ({ name, value }));
+    let arraysr = Array.from(baza_sr, ([name, value]) => ({ name, value }));
+    localStorage.setItem('bazaEN', JSON.stringify(arrayen));
+    localStorage.setItem('bazaSR', JSON.stringify(arraysr));
+
+
      
     document.getElementById("mojKomentar").style.visibility="visible";
 
@@ -667,9 +731,9 @@ function prevediDusanovJezik(){
 
    
 let imenaTreninga = {
-    "Karma Joga": "Karma Yoga",
-    "Radža Joga": "Radža Yoga",
-    "Hata Joga" : "Hata Yoga",
+    "Karma joga": "Karma Yoga",
+    "Radža joga": "Radža Yoga",
+    "Hata joga" : "Hata Yoga",
     "Klasični pilates" : "Klasični pilates",
     "Reformer pilates" :"Reformer pilates",
     "Stott pilates":"Stott pilates",
@@ -679,9 +743,9 @@ let imenaTreninga = {
     "Kardio Boks":"Kardio Boks",
     "Trčanje": "Trčanje",
     "Kružni trening" : "Kružni trening",
-    "Kharma Yoga" : "Karma Yoga" ,
-    "Raja Yoga" : "Radža Yoga",
-    "Hatha Yoga" : "Hata Yoga",
+    "Kharma yoga" : "Karma Yoga" ,
+    "Raja yoga" : "Radža Yoga",
+    "Hatha yoga" : "Hata Yoga",
     "Classic pilates" :"Klasični pilates",
     "Reformer pilates" :"Reformer pilates",
     "Stott pilates" :"Stott pilates",
@@ -693,6 +757,7 @@ let imenaTreninga = {
     "Circular training":"Kružni trening"
 
 }
+
  return imenaTreninga[sessionStorage.getItem('kategorija')]; 
 
 }
