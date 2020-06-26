@@ -696,9 +696,13 @@ function updateMojKomentar(){
     $("#brojKomentara").text('1');
     let el = baza.get(sessionStorage.getItem("kategorija"));
     let nova_ocena = Math.floor((el.ocena  + obj.ocena)/2);
-    for (let i = 0; i < nova_ocena; i++) {
+    for (let i = 0; i < 5; i++) {
+        if(i<nova_ocena){
+
+
         $("#star" + i).removeClass("grey");
-        $("#star" + i).css({ "color": "gold" });
+        $("#star" + i).css({ "color": "gold" });}
+        else  $("#star" + i).css({ "color": "grey" });
 
     }
     if(localStorage.getItem('lang')=='en'){
@@ -719,7 +723,6 @@ function updateMojKomentar(){
     let arraysr = Array.from(baza_sr, ([name, value]) => ({ name, value }));
     localStorage.setItem('bazaEN', JSON.stringify(arrayen));
     localStorage.setItem('bazaSR', JSON.stringify(arraysr));
-
 
      
     document.getElementById("mojKomentar").style.visibility="visible";
